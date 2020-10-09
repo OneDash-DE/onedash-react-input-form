@@ -2,7 +2,7 @@ name: Check coding
 on:
     pull_request:
         branches:
-            - main
+            - master
 jobs:
     code-check:
         name: "Run Code checks"

@@ -2,7 +2,7 @@ name: Deploy Server
 on:
     push:
         branches:
-            - main
+            - master
         tags-ignore:
 
 jobs:
