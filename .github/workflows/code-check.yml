@@ -1,0 +1,22 @@
+name: Check coding
+on:
+    pull_request:
+        branches:
+            - master
+jobs:
+    code-check:
+        name: "Run Code checks"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: 🏗 Install dependencies
+              run: npm i
+
+            - name: 📝 Format coding
+              run: npm run format
+
+            - name: "🚧 Check linting"
+              run: npm run lint
+
+            - name: "🚦 Build package"
+              run: npm run build

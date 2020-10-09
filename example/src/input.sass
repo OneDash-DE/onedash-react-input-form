@@ -1,0 +1,361 @@
+html
+	--blue: #162055
+	--invalid: #d13131
+	--background: white
+	--very-light-gray: #edf1f6
+	--light-gray: #bfc3ca
+	--middle-gray: #81848a
+
+.onedash-form-component
+	position: relative
+	box-sizing: border-box
+	max-width: 400px
+	width: 100%
+	margin: 15px 0px
+	display: inline-block
+
+	*
+		box-sizing: border-box
+	.onedash-label
+		display: block
+		font-size: 11px
+		color: var(--light-gray)
+		margin: 0px 0px 5px 15px
+
+		.required
+			margin-left: 3px
+
+	&.with-icon
+		.placeholder-required
+			right: 64px
+		input, select, textarea
+			padding-right: 75px
+		.onedash-custom-select__control
+			padding-right: 60px
+
+	.placeholder-required
+		position: absolute
+		color: var(--invalid)
+		right: 10px
+		top: 10px
+
+	.input-wrapper
+		position: relative
+
+	.input-icon
+		position: absolute
+		background: var(--very-light-gray)
+		height: calc(100% - 2px)
+		width: 54px
+		right: 1px
+		top: 1px
+		border-radius: 0px 14px 14px 0px
+		display: flex
+		justify-content: center
+		align-items: center
+		z-index: 1
+		i
+			color: var(-middle-gray)
+			font-size: 20px
+
+	input, select, textarea
+		padding: 18px 15px
+		border-radius: 15px
+		box-shadow: none
+		border: 1px solid var(--light-gray)
+		font-family: Montserrat
+		font-size: 13px
+		line-height: 100%
+		font-weight: 400
+		width: 100%
+		height: 100%
+		transition: 0.15s border ease-in-out
+		background-color: var(--background)
+		resize: none
+		appearance: none
+
+		&:focus
+			outline: none
+			border-color: var(--middle-gray)
+
+	.DateRangePicker, .SingleDatePicker
+		width: 100%
+		&_picker
+			z-index: 2
+		.DateRangePickerInput,.SingleDatePickerInput
+			border: none
+			width: 100%
+			.DateInput
+				width: calc(50% - 15px)
+				&_fang
+					display: none
+			.DateRangePickerInput_arrow
+				width: 30px
+				display: inline-flex
+				justify-content: center
+		.SingleDatePickerInput
+			.DateInput
+				width: 100%
+				&_fang,&_screenReaderMessage
+					display: none
+
+	.error-icon
+		display: none
+
+	&.input-invalid
+		input
+			border-color: var(--invalid)
+
+		.input-wrapper
+			animation: .5s bounce
+
+		.error-message
+			position: absolute
+			font-size: 10px
+			left: 15px
+			bottom: 5px
+			color: var(--invalid)
+
+		.error-icon
+			z-index: 2
+			background: var(--invalid)
+			position: absolute
+			right: 0
+			top: 0
+			height: 100%
+			width: 54px
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 0px 13px 13px 0px
+			transform-style: preserve-3d
+			transform-origin: center right
+			animation: 0.2s flip-in ease-in-out
+
+			.icon
+				display: inline-block
+				width: 150px
+				transform: scale(0.25)
+
+				.stroke
+					stroke: white
+				.circular
+					width: 150px
+
+				.circular circle.path
+					stroke-dasharray: 330
+					stroke-dashoffset: 0
+					stroke-linecap: round
+					opacity: 0.4
+					animation: 0.3s draw-circle ease-out
+
+				.cross
+					stroke-width: 6.25
+					stroke-linecap: round
+					position: absolute
+					top: 54px
+					left: 54px
+					width: 40px
+					height: 40px
+
+					.first-line
+						animation: 0.2s draw-first-line ease-out
+					.second-line
+						animation: 0.2s draw-second-line ease-out
+
+	.onedash-custom-select
+		&__control
+			min-height: 54px
+			border-radius: 15px
+			background-color: var(--background)
+			border: 1px solid var(--light-gray)
+			box-shadow: none
+			&:hover, &--is-focused
+				border-color: var(--middle-gray)
+
+		&__placeholder
+			font-family: Montserrat
+			font-size: 13px
+			line-height: 100%
+			font-weight: 400
+
+		&__value-container
+			padding: 10px 15px
+		&__menu
+			background: var(--background)
+			z-index: 2
+		&__option
+			font-family: Montserrat
+			font-size: 13px
+			line-height: 100%
+			&--is-focused
+				background: var(--light-gray)
+			&:hover
+				background: var(--very-light-gray)
+
+	&.onedash-boolean
+		--duration: 0.4s
+
+		&.has-children
+			display: inline-flex
+			align-items: center
+			.onedash-children
+				font-size: 13px
+				line-height: 100%
+				font-weight: 400
+
+		.checker
+			display: block
+			height: 54px
+			width: 100px
+			box-sizing: content-box
+			padding: 5px
+			border-radius: 4px
+			transition: transform var(--duration) ease
+			cursor: pointer
+			flex-shrink: 0
+			margin-right: 10px
+			margin-top: 5px
+			position: relative
+
+		.checkmark
+			width: 30px
+			height: 30px
+			transition: transform var(--duration) ease
+			transform: translateX(-3px)
+			position: relative
+
+			svg
+				display: block
+				background: var(--very-light-gray)
+				transform: translateX(10px)
+				border-radius: 10px
+				margin-top: 8px
+
+				transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease
+
+				path
+					// opacity: 0
+					stroke-dasharray: 90 90
+					stroke-dashoffset: 90
+					transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3)
+
+		.checkbox
+			position: absolute
+			top: 0
+			left: 0
+			opacity: 0.4
+			visibility: hidden
+
+			&:checked
+				~ .checkmark
+					transform: translate(60px)
+
+					svg
+						background: var(--blue)
+						transform: translate(-6.4px)
+						path
+							stroke-dashoffset: 0
+
+		.check-bg
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			border-radius: inherit
+			background: var(--background)
+			border-radius: 15px
+			border: 1px solid var(--light-gray)
+			box-sizing: border-box
+
+			&:before,
+			&:after
+				content: ""
+				position: absolute
+				top: 0
+				left: 0
+				height: 100%
+				width: 100%
+				border-radius: inherit
+
+			&:after
+				background: var(--background)
+
+			&:focus
+				outline: none
+				border-color: var(--middle-gray)
+
+		.checker.checker
+			&:active
+				transform: scale(0.85)
+				transition-duration: calc(var(--duration) / 2)
+
+				.check-bg::before
+					transform: translateY(0) scale(0.8)
+					opacity: 0.2
+
+.onedash-form
+	.form-buttons
+		margin-top: 20px
+	.onedash-button
+		height: 54px
+		border-radius: 15px
+		border: none
+		padding: 18px 30px
+		cursor: pointer
+		text-transform: uppercase
+		font-weight: 900
+		transition: 0.15s all ease-in-out
+
+		&.form-submit-btn
+			background: var(--blue)
+			color: white
+			margin-left: 10px
+
+			&:disabled
+				color: var(--middle-gray)
+				background: var(--light-gray)
+				pointer-events: none
+
+		&:hover
+			opacity: 0.7
+@keyframes flip-in
+	0%
+		transform: rotateY( 90deg )
+		opacity: 0
+	100%
+		opacity: 1
+		transform: rotateY( 0deg )
+@keyframes bounce
+	0%
+		transform: translateX(0px)
+		timing-function: ease-in
+
+	37%
+		transform: translateX(5px)
+		timing-function: ease-out
+
+	55%
+		transform: translateX(-5px)
+		timing-function: ease-in
+
+	73%
+		transform: translateX(4px)
+		timing-function: ease-out
+
+	82%
+		transform: translateX(-4px)
+		timing-function: ease-in
+
+	91%
+		transform: translateX(2px)
+		timing-function: ease-out
+
+	96%
+		transform: translateX(-2px)
+		timing-function: ease-in
+
+	100%
+		transform: translateX(0px)
+		timing-function: ease-in

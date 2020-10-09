@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    "onedash-react-form.code-workspace": true,
+    "package-lock.json": true,
+    "node_modules": true,
+    "dist": true,
+    "example\\package-lock.json": true,
+    ".editorconfig": true,
+    ".eslintignore": true,
+    ".eslintrc": true,
+    ".gitignore": true,
+    ".prettierrc": true,
+    ".releaserc": true,
+    "tsconfig.json": true
+  }
+}
