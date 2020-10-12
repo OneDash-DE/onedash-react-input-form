@@ -17,6 +17,9 @@ jobs:
 
             - name: "🚦 Build package"
               run: npm run build
+            
+            - name: "📖 Build Example"
+              run: npm run deployExample
 
             - name: Semantic Release
               env:
@@ -24,5 +27,4 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: npm run release
 
-            - name: "📖 Build Example"
-              run: npm run deployExample
+            
