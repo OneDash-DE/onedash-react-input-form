@@ -19,7 +19,7 @@ jobs:
               run: npm run build
             
             - name: "📖 Build Example"
-              run: npm run deployExample
+              run: npm run build-pages
 
             - name: Semantic Release
               env:
