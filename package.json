@@ -15,7 +15,7 @@
 		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern,cjs",
 		"start": "microbundle watch --jsx React.createElement --css-modules false --no-compress --format modern,cjs",
 		"deployExample": "cd example && npm i && npm run build",
-		"build-pages": "npm run deployExample && gh-pages -d example/build",
+		"build-pages": "npm run deployExample && gh-pages -d example/build -u 'github-actions-bot <support+actions@github.com>'",
 		"lint": "npx eslint src/**/*.{js,ts,tsx} --quiet --fix",
 		"format": "npx prettier --write src/**/*.{js,ts,tsx}",
 		"release": "npx semantic-release",
