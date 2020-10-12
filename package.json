@@ -14,8 +14,7 @@
 	"scripts": {
 		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern,cjs",
 		"start": "microbundle watch --jsx React.createElement --css-modules false --no-compress --format modern,cjs",
-		"deployExample": "cd example && npm i && npm run build",
-		"build-pages": "npm run deployExample && gh-pages -d example/build -u 'github-actions-bot <support+actions@github.com>'",
+		"build-example": "cd example && npm i && npm run build",
 		"lint": "npx eslint src/**/*.{js,ts,tsx} --quiet --fix",
 		"format": "npx prettier --write src/**/*.{js,ts,tsx}",
 		"release": "npx semantic-release",
@@ -38,6 +37,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.4.0",
 		"@typescript-eslint/parser": "^4.4.0",
 		"babel-eslint": "^10.1.0",
+		"cleave.js": "^1.6.0",
 		"conventional-changelog-conventionalcommits": "^4.4.0",
 		"cross-env": "^7.0.2",
 		"dayjs": "^1.9.1",
@@ -51,7 +51,6 @@
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-react": "^7.21.4",
 		"eslint-plugin-standard": "^4.0.1",
-		"gh-pages": "^3.1.0",
 		"husky": "^4.3.0",
 		"microbundle": "^0.12.4",
 		"moment": "^2.29.1",
@@ -65,8 +64,7 @@
 		"react-select": "^3.1.0",
 		"semantic-release": "^17.2.1",
 		"typescript": "^4.0.3",
-		"uuid": "^8.3.1",
-		"cleave.js": "^1.6.0"
+		"uuid": "^8.3.1"
 	},
 	"files": [
 		"dist"
