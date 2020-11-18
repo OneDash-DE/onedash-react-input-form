@@ -9,16 +9,7 @@ export enum ErrorCodes {
 	TelWrong,
 	NullNotAllowed
 }
-
-export const ERROR_MESSAGES: { [key in ErrorCodes]: string } = {
-	[ErrorCodes.Default]: "The entered value is invalid",
-	[ErrorCodes.IsEmpty]: "This input is required",
-	[ErrorCodes.IsTooShort]: "The entered value is too short",
-	[ErrorCodes.IsTooLong]: "The entered value is too long",
-	[ErrorCodes.EmailWrong]: "The entered email is invalid",
-	[ErrorCodes.TelWrong]: "The entered phone number is invalid",
-	[ErrorCodes.NullNotAllowed]: "Value 0 is not allowed"
-};
+export type ErrorMessages = { [key in ErrorCodes]: string };
 
 export interface GenericInputProps<ValueType> {
 	/**

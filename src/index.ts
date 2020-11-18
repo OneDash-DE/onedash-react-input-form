@@ -8,10 +8,32 @@ import Input from "./components/Input";
 import Numeric from "./components/Numeric";
 import Textarea from "./components/Textarea";
 import Toggle from "./components/Toggle";
-import { ValueLabelPair } from "./types";
+import { ErrorMessages, ValueLabelPair } from "./types";
+import { DE, EN } from "./locales";
 import dayjs from "dayjs";
+import { setLocaleMessages } from "./ErrorMessages";
 
-export { Form, NativeSelect, CustomSelect, Button, DatePicker, DateRangePicker, Input, Numeric, Toggle, Textarea, ValueLabelPair };
+const FormLocales = {
+	DE,
+	EN
+};
+
+export {
+	Form,
+	NativeSelect,
+	CustomSelect,
+	Button,
+	DatePicker,
+	DateRangePicker,
+	Input,
+	Numeric,
+	Toggle,
+	Textarea,
+	ValueLabelPair,
+	ErrorMessages,
+	setLocaleMessages,
+	FormLocales
+};
 
 declare module "dayjs" {
 	export interface Dayjs {

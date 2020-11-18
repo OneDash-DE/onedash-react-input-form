@@ -1,8 +1,22 @@
 import React, { Component } from "react";
-import { Form, Input, NativeSelect, DateRangePicker, DatePicker, Toggle, Textarea, CustomSelect, Numeric } from "onedash-react-form";
+import {
+	Form,
+	Input,
+	NativeSelect,
+	DateRangePicker,
+	DatePicker,
+	Toggle,
+	Textarea,
+	CustomSelect,
+	Numeric,
+	setLocaleMessages,
+	FormLocales
+} from "onedash-react-form";
 import ErrorIcon from "./ErrorIcon";
 import "onedash-react-form/dist/index.css";
 import { FAVORITE_COLORS, GENDER_OPTIONS } from "./FORM_OPTIONS";
+
+setLocaleMessages(FormLocales.DE);
 
 interface AppProps {}
 

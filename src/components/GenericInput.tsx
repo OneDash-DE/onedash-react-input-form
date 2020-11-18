@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { ErrorCodes, ERROR_MESSAGES, GenericInputProps, GenericInputState } from "../types";
+import GET_ERROR_MESSAGES from "../ErrorMessages";
+import { ErrorCodes, GenericInputProps, GenericInputState } from "../types";
 
 abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
 	protected id = uuidv4();
@@ -32,13 +33,13 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 			errorMessage = customValid.valid === false ? customValid.errorMessage : undefined;
 			valid = customValid.valid;
 		} else {
-			errorMessage = customValid === false ? ERROR_MESSAGES[ErrorCodes.Default] : undefined;
+			errorMessage = customValid === false ? GET_ERROR_MESSAGES()[ErrorCodes.Default] : undefined;
 			valid = customValid;
 		}
 		if (valid) {
 			const v = this._validate();
 			valid = v.valid;
-			errorMessage = valid === false ? ERROR_MESSAGES[v.errorCode ?? ErrorCodes.Default] : undefined;
+			errorMessage = valid === false ? GET_ERROR_MESSAGES()[v.errorCode ?? ErrorCodes.Default] : undefined;
 		}
 
 		if (updateComponent === true) this.setState({ valid, errorMessage });

@@ -14,6 +14,7 @@ import CustomSelect from "./CustomSelect";
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
 	onChange?: (values: any, control: Form, valid: boolean) => void;
+	onValidationUpdate?: (valid: boolean) => void;
 	className?: string;
 	componentClassName?: string;
 
@@ -148,8 +149,11 @@ class Form extends React.Component<FormProps> {
 		if (this.props.onValidate) {
 			valid = this.props.onValidate(this.mapData(), this);
 		}
+		valid = valid && this.validateInputs(false);
+
+		if (this.props.onValidationUpdate) this.props.onValidationUpdate(valid);
 		this.setState({
-			valid: valid && this.validateInputs(false)
+			valid
 		});
 	};
 
