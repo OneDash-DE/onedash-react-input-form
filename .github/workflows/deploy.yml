@@ -18,22 +18,9 @@ jobs:
 
             - name: "🚦 Build package"
               run: npm run build
-            
-            - name: "📖 Build Example"
-              run: npm run build-example
 
-            - name: 🚀 Deploy Example 
-              uses: JamesIves/github-pages-deploy-action@3.6.2
-              with:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                BRANCH: gh-pages
-                FOLDER: example/build # The folder the action should deploy.
-                CLEAN: true
-                
             - name: Semantic Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: npm run release
-
-            
