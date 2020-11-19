@@ -6,5 +6,5 @@ let ERROR_MESSAGES: ErrorMessages = EN;
 export const setLocaleMessages = (messages: ErrorMessages) => {
 	ERROR_MESSAGES = messages;
 };
-const GET_ERROR_MESSAGES = () => ERROR_MESSAGES;
-export default GET_ERROR_MESSAGES;
+const errorMessages = () => ERROR_MESSAGES;
+export default errorMessages;
