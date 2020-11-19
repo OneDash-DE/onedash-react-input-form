@@ -10,6 +10,7 @@ import GenericInput from "./GenericInput";
 import Textarea from "./Textarea";
 import Numeric from "./Numeric";
 import CustomSelect from "./CustomSelect";
+import { set } from "../Utils";
 
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
@@ -185,8 +186,8 @@ class Form extends React.Component<FormProps> {
 		this.references.forEach((entry) => {
 			if (entry.ref) {
 				const valuePair = entry.ref.getValue();
-				if (valuePair.name) {
-					values[valuePair.name] = valuePair.value;
+				if (valuePair.name && valuePair.name !== "_") {
+					set(valuePair.name, values, valuePair.value);
 				}
 			}
 		});

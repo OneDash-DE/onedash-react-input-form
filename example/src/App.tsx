@@ -47,6 +47,7 @@ class App extends Component<AppProps> {
 					componentClassName="tf"
 					className="testing-form"
 					onSubmit={this.onSubmit}
+					onChange={(values) => console.log(values)}
 					submitText="Submit form"
 					resetText="Cancel form"
 					errorIcon={<ErrorIcon />}
@@ -55,7 +56,7 @@ class App extends Component<AppProps> {
 					<div className="fieldset">
 						<NativeSelect
 							icon={<i className="lni lni-home" />}
-							name="gender"
+							name="_"
 							label="Your gender"
 							placeholder="Choose your gender"
 							options={GENDER_OPTIONS}
@@ -63,7 +64,7 @@ class App extends Component<AppProps> {
 						<Input name="disabled" label="Disabled" className="disabled" disabled required />
 
 						<Input
-							name="first-name"
+							name="person.firstName"
 							maxLength={5}
 							label="First name"
 							placeholder="Enter your first name"
@@ -71,7 +72,7 @@ class App extends Component<AppProps> {
 							required
 						/>
 						<Input
-							name="last-name"
+							name="person.lastName"
 							label="Last name"
 							onValidate={validateLastName}
 							placeholder="Enter your last name"
