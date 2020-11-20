@@ -108,6 +108,12 @@ class Input extends GenericInput<string, InputProps> {
 		this.resetted = false;
 		const value: string = String(e.target.value);
 
+		if (this.props.pattern) {
+			// First check pattern
+			const regexr = new RegExp(this.props.pattern);
+			if (regexr.test(value) === false) return;
+		}
+
 		this.setState(
 			{
 				value
