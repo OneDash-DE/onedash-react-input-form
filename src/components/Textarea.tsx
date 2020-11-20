@@ -130,6 +130,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 						ref={this.reference}
 						id={this.id}
 						onChange={this.inputChange}
+						style={this.props.style}
 						value={this.state.value ? this.state.value : ""}
 						onBlur={this.onBlur}
 						autoComplete={this.props.autoComplete}

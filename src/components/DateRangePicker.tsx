@@ -167,6 +167,7 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 					focusedInput={this.state.focusedInput}
 					startDateId={startDateId ?? uuidv4()}
 					endDateId={endDateId ?? uuidv4()}
+					style={this.props.style}
 				/>
 			</div>
 		);

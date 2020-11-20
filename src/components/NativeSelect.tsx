@@ -110,6 +110,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 						placeholder={inputPlaceholder}
 						disabled={this.props.disabled}
 						onBlur={this.onBlur}
+						style={this.props.style}
 						value={this.state.value !== undefined ? JSON.stringify(this.state.value) : "invalid-input"}
 						onFocus={this.onFocus}
 						onChange={(e) => this.inputChange(e.target.value)}

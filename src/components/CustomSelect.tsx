@@ -118,6 +118,7 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 						isLoading={loading}
 						isSearchable={searchable}
 						components={animatedComponents}
+						style={this.props.style}
 						menuPlacement="auto"
 						isClearable={!required}
 						className="component"

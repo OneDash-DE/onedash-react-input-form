@@ -171,6 +171,7 @@ class Input extends GenericInput<string, InputProps> {
 						onBlur={this.onBlur}
 						autoComplete={autoComplete}
 						maxLength={maxLength}
+						style={this.props.style}
 					/>
 				</div>
 			</div>

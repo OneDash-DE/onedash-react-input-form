@@ -64,11 +64,12 @@ class Form extends React.Component<FormProps> {
 				child.type === CustomSelect ||
 				child.type === Toggle
 			) {
-				let className;
-				if (child.props.className && this.props.componentClassName) {
-					className = `${child.props.className} ${this.props.componentClassName}`;
-				} else if (this.props.componentClassName) {
-					className = this.props.componentClassName;
+				let className = "";
+				if (child.props.className) {
+					className += `${child.props.className} `;
+				}
+				if (this.props.componentClassName) {
+					className += `${this.props.componentClassName} `;
 				}
 
 				const newEl = React.cloneElement(

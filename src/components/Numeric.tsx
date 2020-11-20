@@ -186,6 +186,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 						className="component"
 						placeholder={inputPlaceholder}
 						onFocus={this.onFocus}
+						style={this.props.style}
 						ref={this.reference}
 						id={this.id}
 						onChange={this.inputChange}
