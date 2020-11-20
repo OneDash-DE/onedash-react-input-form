@@ -1,6 +1,6 @@
 import React from "react";
 import GenericInput from "./GenericInput";
-import { ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
+import { AutoCompleteTypes, ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
 
 interface NativeSelectSettings {
 	requiredNotVisible?: boolean;
@@ -13,6 +13,7 @@ interface NativeSelectSettings {
 interface NativeSelectProps extends GenericInputProps<any> {
 	options?: ValueLabelPair[];
 	settings?: NativeSelectSettings;
+	autoComplete?: AutoCompleteTypes;
 	required?: boolean;
 	noSelectionText?: string;
 }
@@ -74,7 +75,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 	}
 
 	render() {
-		const { settings, required, icon, errorIcon, placeholder } = this.props;
+		const { settings, required, icon, errorIcon, placeholder, autoComplete } = this.props;
 		const { valid, errorMessage } = this.state;
 
 		const options = this.props.options ? this.props.options : [];
@@ -113,6 +114,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 						style={this.props.style}
 						value={this.state.value !== undefined ? JSON.stringify(this.state.value) : "invalid-input"}
 						onFocus={this.onFocus}
+						autoComplete={autoComplete}
 						onChange={(e) => this.inputChange(e.target.value)}
 						className="component">
 						<option value={'"invalid-input"'}>{this.props.placeholder ? this.props.placeholder : "Please choose ..."}</option>
