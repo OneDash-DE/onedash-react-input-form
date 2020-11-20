@@ -7,7 +7,8 @@ export enum ErrorCodes {
 	IsTooLong,
 	EmailWrong,
 	TelWrong,
-	NullNotAllowed
+	NullNotAllowed,
+	NegativeNotAllowed
 }
 export type ErrorMessages = { [key in ErrorCodes]: string };
 

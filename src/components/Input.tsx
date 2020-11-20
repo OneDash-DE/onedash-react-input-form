@@ -5,7 +5,9 @@ import { AutoCompleteTypes, ErrorCodes, GenericInputProps } from "../types";
 interface InputSettings {
 	requiredNotVisible?: boolean;
 	allowNumberNull?: boolean;
+	allowNumberNegative?: boolean;
 	validateEmail?: boolean;
+	validateTel?: boolean;
 	textAreaRows?: number;
 	showErrorMessage?: boolean;
 	placeholderErrorMessage?: boolean;
@@ -14,6 +16,7 @@ interface InputSettings {
 interface InputProps extends GenericInputProps<string> {
 	required?: boolean;
 	autoComplete?: AutoCompleteTypes;
+	pattern?: string;
 	minLength?: number;
 	maxLength?: number;
 	settings?: InputSettings;
@@ -34,9 +37,16 @@ class Input extends GenericInput<string, InputProps> {
 		let errorCode: ErrorCodes = ErrorCodes.Default;
 		const value = this.state.value;
 
-		if (this.props.type === "number" && this.props.settings?.allowNumberNull === false && this.state.value === 0) {
-			valid = false;
-			errorCode = ErrorCodes.NullNotAllowed;
+		if (this.props.type === "number") {
+			const num = Number(this.state.value);
+			if (this.props.settings?.allowNumberNull === false && num === 0) {
+				valid = false;
+				errorCode = ErrorCodes.NullNotAllowed;
+			}
+			if (this.props.settings?.allowNumberNegative === false && num < 0) {
+				valid = false;
+				errorCode = ErrorCodes.NegativeNotAllowed;
+			}
 		}
 		if (this.props.required === true && (value === undefined || String(value)?.length === 0)) {
 			valid = false;
@@ -50,11 +60,21 @@ class Input extends GenericInput<string, InputProps> {
 			valid = false;
 			errorCode = ErrorCodes.IsTooLong;
 		}
-		if (value && this.props.type === "email" && this.emailValidation(String(value)) === false) {
+		if (
+			value &&
+			this.props.type === "email" &&
+			this.props.settings?.validateEmail !== false &&
+			this.emailValidation(String(value)) === false
+		) {
 			valid = false;
 			errorCode = ErrorCodes.EmailWrong;
 		}
-		if (value && this.props.type === "tel" && this.phoneValidation(String(value)) === false) {
+		if (
+			value &&
+			this.props.type === "tel" &&
+			this.props.settings?.validateTel !== false &&
+			this.phoneValidation(String(value)) === false
+		) {
 			valid = false;
 			errorCode = ErrorCodes.TelWrong;
 		}
@@ -135,7 +155,7 @@ class Input extends GenericInput<string, InputProps> {
 	}
 
 	render() {
-		const { label, settings, placeholder, required, disabled, type, autoComplete, maxLength, icon, errorIcon } = this.props;
+		const { label, settings, placeholder, required, disabled, type, autoComplete, maxLength, icon, errorIcon, pattern } = this.props;
 		const { valid, errorMessage } = this.state;
 
 		let inputPlaceholder = placeholder;
@@ -172,6 +192,7 @@ class Input extends GenericInput<string, InputProps> {
 						value={this.state.value ? this.state.value : ""}
 						onBlur={this.onBlur}
 						autoComplete={autoComplete}
+						pattern={pattern}
 						maxLength={maxLength}
 						style={this.props.style}
 					/>
