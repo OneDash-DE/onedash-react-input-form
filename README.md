@@ -5,5 +5,5 @@
 
 # React.js input form and components
 
-The documentation and examples can be found [here](http://react-forms.onedash.de).
+The documentation and examples can be found [here](https://react-forms.onedash.de).
 
