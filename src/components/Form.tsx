@@ -11,6 +11,7 @@ import Textarea from "./Textarea";
 import Numeric from "./Numeric";
 import CustomSelect from "./CustomSelect";
 import { set } from "../Utils";
+import VerificationCode from "./VerificationCode";
 
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
@@ -62,6 +63,7 @@ class Form extends React.Component<FormProps> {
 				child.type === DateRangePicker ||
 				child.type === Select ||
 				child.type === CustomSelect ||
+				child.type === VerificationCode ||
 				child.type === Toggle
 			) {
 				let className = "";

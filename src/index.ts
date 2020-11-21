@@ -8,6 +8,8 @@ import Input from "./components/Input";
 import Numeric from "./components/Numeric";
 import Textarea from "./components/Textarea";
 import Toggle from "./components/Toggle";
+import VerificationCode from "./components/VerificationCode";
+
 import { ErrorMessages, ValueLabelPair } from "./types";
 import { DE, EN } from "./locales";
 import dayjs from "dayjs";
@@ -32,7 +34,8 @@ export {
 	ValueLabelPair,
 	ErrorMessages,
 	setLocaleMessages,
-	FormLocales
+	FormLocales,
+	VerificationCode
 };
 
 declare module "dayjs" {
