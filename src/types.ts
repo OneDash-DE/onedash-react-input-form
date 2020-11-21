@@ -59,6 +59,11 @@ export interface GenericInputProps<ValueType> {
 	onBlur?: (value?: ValueType) => any;
 
 	/**
+	 * OnFocus Event
+	 */
+	onFocus?: () => any;
+
+	/**
 	 * OnValidate additional validation step for this component
 	 */
 	onValidate?: (value?: ValueType) => boolean | { valid: boolean; errorMessage?: string };

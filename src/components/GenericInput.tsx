@@ -82,6 +82,7 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 	};
 
 	protected onFocus = () => {
+		if (this.props.onFocus) this.props.onFocus();
 		this.setState({
 			focus: true,
 			valid: true,
