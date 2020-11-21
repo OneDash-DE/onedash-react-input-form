@@ -77,14 +77,11 @@ class Form extends React.Component<FormProps> {
 				const newEl = React.cloneElement(
 					child,
 					{
-						ref: (node: any) => {
+						ref: (ref: any) => {
 							this.references.push({
 								name: child.props.name,
-								ref: node
+								ref
 							});
-							const { ref } = child;
-							if (typeof ref === "function") ref(node);
-							else if (ref) ref.current = node;
 						},
 						className,
 						key: i,
