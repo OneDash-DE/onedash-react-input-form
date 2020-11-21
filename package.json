@@ -12,7 +12,7 @@
 		"node": ">=10"
 	},
 	"scripts": {
-		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern,cjs",
+		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern",
 		"start": "npm run build-storybook",
 		"build-example": "cd example && npm i && npm run build",
 		"lint": "npx eslint src/**/*.{js,ts,tsx} --quiet --fix",
@@ -24,7 +24,9 @@
 		"build-storybook": "build-storybook -o example"
 	},
 	"peerDependencies": {
-		"react": "^16.13.1"
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-scripts": "^4.0.0-next.98"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.3",
@@ -35,21 +37,17 @@
 		"@storybook/addon-links": "^6.1.2",
 		"@storybook/preset-create-react-app": "^3.1.5",
 		"@storybook/react": "^6.1.2",
-		"@types/cleave.js": "^1.4.3",
 		"@types/node": "^14.11.8",
 		"@types/react": "^16.9.52",
 		"@types/react-dates": "^21.8.0",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-select": "^3.0.22",
-		"@types/uuid": "^8.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.4.0",
 		"@typescript-eslint/parser": "^4.4.0",
 		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.1",
-		"cleave.js": "^1.6.0",
 		"conventional-changelog-conventionalcommits": "^4.4.0",
 		"cross-env": "^7.0.2",
-		"dayjs": "^1.9.1",
 		"eslint": "^7.11.0",
 		"eslint-config-prettier": "^6.12.0",
 		"eslint-config-standard": "^15.0.1",
@@ -63,18 +61,10 @@
 		"eslint-plugin-standard": "^4.0.1",
 		"husky": "^4.3.0",
 		"microbundle": "^0.12.4",
-		"moment": "^2.29.1",
-		"node-sass": "^4.14.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.1.2",
-		"react": "^16.13.1",
-		"react-dates": "^21.8.0",
-		"react-dom": "^16.13.1",
-		"react-scripts": "^4.0.0-next.98",
-		"react-select": "^3.1.0",
 		"semantic-release": "^17.2.1",
-		"typescript": "^4.0.3",
-		"uuid": "^8.3.1"
+		"typescript": "^4.0.3"
 	},
 	"files": [
 		"dist"
@@ -87,5 +77,15 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@types/cleave.js": "^1.4.3",
+		"@types/uuid": "^8.3.0",
+		"cleave.js": "^1.6.0",
+		"dayjs": "^1.9.1",
+		"uuid": "^8.3.1",
+		"moment": "^2.29.1",
+		"react-dates": "^21.8.0",
+		"react-select": "^3.1.0",
+		"node-sass": "^4.14.1"
+	}
 }
