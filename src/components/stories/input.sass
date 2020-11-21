@@ -192,6 +192,72 @@ html
 				background: var(--light-gray)
 			&:hover
 				background: var(--very-light-gray)
+	&.onedash-verification-input
+		width: auto
+
+		.example-spinner
+			position: absolute
+			z-index: 2
+			left: 50%
+			top: 50%
+			transform: translateX(-50%) translateY(-50%)
+
+		&.disabled .display
+			background-color: var(--very-light-gray)
+			pointer-events: none
+			color: var(--light-gray)
+		.display-list
+			display: inline-block
+			position: relative
+			display: flex
+			border-radius: 15px
+			height: 54px
+		input
+			position: absolute
+			border: none
+			font-size: 22px
+			text-align: center
+			background-color: transparent
+			outline: none
+			border: none
+			padding: 0px
+			width: auto
+			height: 100%
+			width: 32px
+			top: 0px
+			bottom: 0px
+			z-index: 1
+
+		.display
+			border: 1px solid var(--light-gray)
+			background-color: var(--background)
+			border-right: none
+			width: 32px
+			height: 100%
+			display: flex
+			align-items: center
+			justify-content: center
+			font-size: 22px
+			position: relative
+			&:last-child
+				border-right: 1px solid var(--light-gray)
+				border-radius: 0px 15px 15px 0px
+				.shadows
+					border-radius: 0px 15px 15px 0px
+			&:first-child, &:first-child .shadows
+				border-radius: 15px 0px 0px 15px
+
+			.shadows
+				position: absolute
+				left: -1px
+				top: -1px
+				bottom: 0
+				right: 0
+				border: 1px solid var(--blue)
+				width: calc(100% + 2px)
+				height: calc(100% + 2px)
+				z-index: 1
+				transition: 0.15s all ease-in-out
 
 	&.onedash-boolean
 		--duration: 0.4s

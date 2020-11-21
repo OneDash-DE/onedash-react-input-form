@@ -24,6 +24,30 @@ h2
 	font-weight: 900
 	margin-top: 50px
 
+.example-spinner
+	margin: 0px auto
+	width: 70px
+	text-align: center
+	margin-top: 3px
+
+	& > div
+	  width: 18px
+	  height: 18px
+	  background-color: #004297
+
+	  border-radius: 100%
+	  display: inline-block
+	  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both
+	  animation: sk-bouncedelay 1.4s infinite ease-in-out both
+
+	& .bounce1
+	  -webkit-animation-delay: -0.32s
+	  animation-delay: -0.32s
+
+	& .bounce2
+	  -webkit-animation-delay: -0.16s
+	  animation-delay: -0.16s
+
 *
 	box-sizing: border-box
 
@@ -66,3 +90,9 @@ h2
 
 	100%
 		opacity: 0.4
+
+@keyframes sk-bouncedelay
+	0%, 80%, 100%
+		transform: scale(0)
+	40%
+		transform: scale(1.0)

@@ -176,7 +176,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 				<div className="input-wrapper">
 					{icon && <div className="input-icon">{icon}</div>}
 					{errorIcon}
-					{valid === false && errorMessage && settings?.showErrorMessage !== true && (
+					{valid === false && errorMessage && settings?.showErrorMessage !== false && (
 						<label className="error-message" htmlFor={this.id}>
 							{errorMessage}
 						</label>

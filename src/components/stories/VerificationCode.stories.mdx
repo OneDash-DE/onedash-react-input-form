@@ -1,0 +1,105 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import VerificationCode from "../VerificationCode";
+import "./style.sass";
+import "./input.sass";
+import { FAVORITE_COLORS } from "./SELECT_OPTIONS.ts";
+
+<Meta title="Components/Verification - Code" component={VerificationCode} />
+
+export const Spinner = (
+	<div class="example-spinner">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+);
+
+# VerificationCode
+
+## Default
+
+```jsx
+<VerificationCode name="verification-code" codeLength={4} />
+```
+
+<Canvas>
+	<Story
+		name="Default"
+		args={{
+			name: "default-verification-code",
+			label: "Label name",
+			codeLength: 4
+		}}>
+		{(args) => <VerificationCode {...args} />}
+	</Story>
+</Canvas>
+
+## Prefilled
+
+```jsx
+<VerificationCode name="verification-code" value={["1", "9", "5", "3"]} codeLength={4} />
+```
+
+<Canvas>
+	<Story
+		name="Prefilled"
+		args={{
+			name: "default-verification-code",
+			label: "Label name",
+			codeLength: 4,
+			value: ["1", "9", "5", "3"]
+		}}>
+		{(args) => <VerificationCode {...args} />}
+	</Story>
+</Canvas>
+
+## Disabled
+
+```jsx
+<VerificationCode name="verification-code" codeLength={4} disabled />
+```
+
+<Canvas>
+	<Story
+		name="Disabled"
+		args={{
+			name: "default-verification-code",
+			label: "Label name",
+			codeLength: 4,
+			value: ["1", "9", "5", "3"],
+			disabled: true
+		}}>
+		{(args) => <VerificationCode {...args} />}
+	</Story>
+</Canvas>
+
+## Loading
+
+If you provide a loading spinner and the input state is set to disabled, the spinner will be shown.
+
+```jsx
+const Spinner = (
+	<div class="example-spinner">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+);
+// Use this Spinner now as loading Spinner
+<VerificationCode name="verification-code" codeLength={4} loadingSpinner={Spinner} disabled />;
+```
+
+<Canvas>
+	<Story
+		name="Loading"
+		args={{
+			name: "default-verification-code",
+			label: "Label name",
+			codeLength: 4,
+			value: ["1", "9", "5", "3"],
+			loadingSpinner: Spinner,
+			disabled: true
+		}}>
+		{(args) => <VerificationCode {...args} />}
+	</Story>
+</Canvas>

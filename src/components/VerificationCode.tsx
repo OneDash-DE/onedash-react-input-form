@@ -4,31 +4,31 @@ import { AutoCompleteTypes, ErrorCodes, GenericInputProps } from "../types";
 
 interface InputSettings {
 	requiredNotVisible?: boolean;
-	allowNumberNull?: boolean;
-	allowNumberNegative?: boolean;
-	validateEmail?: boolean;
-	validateTel?: boolean;
-	textAreaRows?: number;
 	showErrorMessage?: boolean;
-	placeholderErrorMessage?: boolean;
 }
 
-export interface InputProps extends GenericInputProps<string> {
+export interface VerificationCodeProps extends GenericInputProps<string[]> {
 	required?: boolean;
+	codeLength: number;
 	autoComplete?: AutoCompleteTypes;
-	pattern?: string;
-	minLength?: number;
-	maxLength?: number;
 	settings?: InputSettings;
-	type?: "text" | "password" | "number" | "email" | "tel" | "time";
 	autoFocus?: boolean;
+	loadingSpinner?: JSX.Element;
 }
 
-class Input extends GenericInput<string, InputProps> {
+class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 	saveTimeout: undefined | number;
 	waitingValue: undefined | any;
 	isChanging = false;
-	constructor(props: InputProps) {
+	state = {
+		value: [] as string[],
+		selectedIndex: 0,
+		valid: true,
+		focus: false,
+		errorMessage: undefined
+	};
+
+	constructor(props: VerificationCodeProps) {
 		super(props);
 		this.reference = React.createRef<HTMLInputElement>();
 	}
@@ -38,92 +38,55 @@ class Input extends GenericInput<string, InputProps> {
 		let errorCode: ErrorCodes = ErrorCodes.Default;
 		const value = this.state.value;
 
-		if (this.props.type === "number") {
-			const num = Number(this.state.value);
-			if (this.props.settings?.allowNumberNull === false && num === 0) {
-				valid = false;
-				errorCode = ErrorCodes.NullNotAllowed;
-			}
-			if (this.props.settings?.allowNumberNegative === false && num < 0) {
-				valid = false;
-				errorCode = ErrorCodes.NegativeNotAllowed;
-			}
-		}
 		if (this.props.required === true && (value === undefined || String(value)?.length === 0)) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
 		}
-		if (this.props.minLength && value && String(value)?.length < this.props.minLength) {
-			valid = false;
-			errorCode = ErrorCodes.IsTooShort;
-		}
-		if (this.props.maxLength && this.props.maxLength > 0 && value && String(value)?.length > this.props.maxLength) {
-			valid = false;
-			errorCode = ErrorCodes.IsTooLong;
-		}
-		if (
-			value &&
-			this.props.type === "email" &&
-			this.props.settings?.validateEmail !== false &&
-			this.emailValidation(String(value)) === false
-		) {
-			valid = false;
-			errorCode = ErrorCodes.EmailWrong;
-		}
-		if (
-			value &&
-			this.props.type === "tel" &&
-			this.props.settings?.validateTel !== false &&
-			this.phoneValidation(String(value)) === false
-		) {
-			valid = false;
-			errorCode = ErrorCodes.TelWrong;
-		}
 
 		return { valid, errorCode };
-	};
-
-	private emailValidation = (email: string) => {
-		// eslint-disable-next-line no-useless-escape
-		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(email.toLowerCase());
-	};
-
-	private phoneValidation = (phoneNum: string) => {
-		const re = /^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/;
-		return re.test(phoneNum.toLowerCase());
 	};
 
 	private formatValue = (value?: any) => {
 		if (value) {
 			return value;
 		} else {
-			if (this.props.type === "number") {
-				return 0;
-			}
-			return undefined;
+			return [];
 		}
 	};
 
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		if (this.state.selectedIndex >= this.props.codeLength) return;
 		this.resetted = false;
-		const value: string = String(e.target.value);
+		const value = this.state.value;
+		let selectedIndex = this.state.selectedIndex;
+		let inputValue = String(e.target.value);
+		if (value[selectedIndex]?.length > 0 && inputValue.length > 1) {
+			inputValue = inputValue.slice(1);
+		}
 
-		if (this.props.pattern) {
-			// First check pattern
-			const regexr = new RegExp(this.props.pattern);
-			if (regexr.test(value) === false) return;
+		if (/^$|^[0-9]+$/.test(inputValue) === false) return; // Check pattern
+
+		// Empty
+		if (inputValue.length === 0) {
+			value[selectedIndex] = "";
+			selectedIndex--;
+		}
+
+		for (let i = 0; i < Math.min(inputValue.length, this.props.codeLength); i++) {
+			value[selectedIndex] = inputValue[i];
+			selectedIndex++;
 		}
 
 		this.setState(
 			{
-				value
+				value,
+				selectedIndex
 			},
 			() => this.saveInput(value)
 		);
 	};
 
-	private saveInput = (value?: string) => {
+	private saveInput = (value?: string[]) => {
 		if (!this.isChanging) {
 			this.isChanging = true;
 			this.saveTimeout = undefined;
@@ -144,11 +107,20 @@ class Input extends GenericInput<string, InputProps> {
 		}
 	};
 
+	handleKeyUp = (e: any) => {
+		if (e.key === "ArrowLeft" && this.state.selectedIndex > 0) {
+			this.setState({ selectedIndex: this.state.selectedIndex - 1 });
+		}
+		if (e.key === "ArrowRight" && this.state.selectedIndex < this.props.codeLength - 1) {
+			this.setState({ selectedIndex: this.state.selectedIndex + 1 });
+		}
+	};
+
 	componentDidMount() {
 		this.setState({ value: this.formatValue(this.props.value) });
 	}
 
-	componentDidUpdate(_lastProps: InputProps) {
+	componentDidUpdate(_lastProps: VerificationCodeProps) {
 		const t = JSON.stringify;
 		if (
 			(t(this.formatValue(this.props.value)) !== t(this.state.value) && this.resetted === true) ||
@@ -168,22 +140,19 @@ class Input extends GenericInput<string, InputProps> {
 			placeholder,
 			required,
 			disabled,
-			type,
 			autoComplete,
-			maxLength,
 			icon,
 			errorIcon,
-			pattern,
-			autoFocus
+			codeLength,
+			autoFocus,
+			loadingSpinner
 		} = this.props;
-		const { valid, errorMessage } = this.state;
+		const { valid, errorMessage, value, focus, selectedIndex } = this.state;
 
-		let inputPlaceholder = placeholder;
-		if (settings?.placeholderErrorMessage === true && valid === false && errorMessage) {
-			inputPlaceholder = errorMessage;
-		}
+		const hideInput = !(value.length < codeLength);
+
 		return (
-			<div className={this.buildClassList("onedash-input")}>
+			<div className={this.buildClassList("onedash-verification-input")}>
 				{label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{label}
@@ -200,27 +169,53 @@ class Input extends GenericInput<string, InputProps> {
 					)}
 					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
 
+					{loadingSpinner && disabled && <div className="spinner">{loadingSpinner}</div>}
+
 					<input
 						disabled={disabled}
 						className="component"
-						placeholder={inputPlaceholder}
+						placeholder={placeholder}
 						onFocus={this.onFocus}
 						ref={this.reference}
-						type={type ?? "text"}
 						id={this.id}
+						onKeyUp={this.handleKeyUp}
 						onChange={this.inputChange}
-						value={this.state.value ? this.state.value : ""}
+						value={value[selectedIndex] ?? ""}
 						onBlur={this.onBlur}
 						autoComplete={autoComplete}
-						pattern={pattern}
-						maxLength={maxLength}
-						style={this.props.style}
+						pattern="^$|^[0-9]+$"
+						type="numeric"
 						autoFocus={autoFocus}
+						style={{
+							...this.props.style,
+							left: `${(selectedIndex / codeLength) * 100}%`,
+							opacity: hideInput ? 0 : 1
+						}}
 					/>
+					<div className="display-list">
+						{new Array(codeLength).fill(0).map((_, index) => {
+							const selected = selectedIndex === index;
+
+							return (
+								<div
+									key={index}
+									className="display"
+									onClick={() => {
+										if (disabled) return;
+										this.setState({ selectedIndex: index });
+										this.onFocus();
+										this.reference.current?.focus();
+									}}>
+									{value[index]}
+									{selected && focus && !disabled && <div className="shadows" />}
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default Input;
+export default VerificationCode;
