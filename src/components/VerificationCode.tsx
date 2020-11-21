@@ -184,7 +184,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 						onBlur={this.onBlur}
 						autoComplete={autoComplete}
 						pattern="^$|^[0-9]+$"
-						type="numeric"
+						type="tel"
 						autoFocus={autoFocus}
 						style={{
 							...this.props.style,
