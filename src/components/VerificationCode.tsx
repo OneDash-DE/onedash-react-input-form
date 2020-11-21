@@ -46,7 +46,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 		return { valid, errorCode };
 	};
 
-	private formatValue = (value?: any) => {
+	formatValue = (value?: any) => {
 		if (value) {
 			return value;
 		} else {

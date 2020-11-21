@@ -3,6 +3,9 @@ import { v4 as uuidv4 } from "uuid";
 import errorMessages from "../ErrorMessages";
 import { ErrorCodes, GenericInputProps, GenericInputState } from "../types";
 
+interface GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
+	formatValue(value: any): any;
+}
 abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
 	protected id = uuidv4();
 	protected reference: any;
@@ -18,6 +21,12 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 	public resetValid = () => {
 		this.setState({
 			valid: true
+		});
+	};
+
+	public setInvalid = () => {
+		this.setState({
+			valid: false
 		});
 	};
 
@@ -58,7 +67,7 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 		if (this.props.onChange) this.props.onChange(undefined);
 		if (this.props._change) this.props._change({ name: this.props.name, value: undefined });
 		this.setState({
-			value: undefined,
+			value: this.formatValue ? this.formatValue(undefined) : undefined,
 			errorMessage: undefined,
 			valid: true
 		});

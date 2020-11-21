@@ -54,7 +54,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		return { valid, errorCode };
 	};
 
-	private formatValue = (value?: number) => {
+	formatValue = (value?: number) => {
 		if (!value) return;
 
 		let val = String(value);

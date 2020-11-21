@@ -82,6 +82,7 @@ class Form extends React.Component<FormProps> {
 								name: child.props.name,
 								ref
 							});
+							child.props.ref = ref;
 						},
 						className,
 						key: i,

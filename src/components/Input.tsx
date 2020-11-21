@@ -94,7 +94,7 @@ class Input extends GenericInput<string, InputProps> {
 		return re.test(phoneNum.toLowerCase());
 	};
 
-	private formatValue = (value?: any) => {
+	formatValue = (value?: any) => {
 		if (value) {
 			return value;
 		} else {

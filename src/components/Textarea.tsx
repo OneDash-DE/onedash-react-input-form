@@ -45,7 +45,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 		return { valid, errorCode };
 	};
 
-	private formatValue = (value?: any) => {
+	formatValue = (value?: any) => {
 		if (value) {
 			return value;
 		} else {
