@@ -1,4 +1,4 @@
-import { ValueLabelPair } from "../../dist";
+import { ValueLabelPair } from "../../types";
 
 export const GENDER_OPTIONS: ValueLabelPair[] = [
 	{

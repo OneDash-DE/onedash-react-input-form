@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import Input from "../Input";
+import "./style.sass";
+import "./input.sass";
+
+<Meta title="Components/Input" component={Input} />
+
+# Input
+
+The input component is an abstraction of the html input element. It can be used for text, password, email and tel input.
+
+## Default
+
+```jsx
+<Input label="Only numeric" name="default-input" />
+```
+
+<Canvas>
+	<Story
+		name="Default"
+		args={{
+			name: "default-input",
+			label: "Label name"
+		}}>
+		{(args) => <Input {...args} />}
+	</Story>
+</Canvas>
+
+## Required
+
+The required flag can be set if an input is reuired. If you don't provide a value, a error message in the selected locale will be shown. Moreover, it creates a star which identifies that this input is required.
+The stars can be hidden by providing additional settings:
+
+```jsx
+<Input label="Only numeric" settings={{ requiredNotVisible: "<TRUE OR FALSE>" }} name="required-input" required />
+```
+
+<Canvas>
+	<Story
+		name="Required"
+		args={{
+			name: "required-input",
+			label: "Label name",
+			required: true
+		}}>
+		{(args) => <Input {...args} />}
+	</Story>
+</Canvas>
+
+## Type
+
+It is possible to use the different html input types as property. This is especcially usefull to show different mobile keyboards.
+
+```jsx
+<Input type="<text|password|number|email|tel|time>" label="Only numeric" name="pattern-input" />
+```
+
+<Canvas>
+	<Story
+		name="Type"
+		args={{
+			name: "pattern-input",
+			label: "Password input",
+			type: "password"
+		}}>
+		{(args) => <Input {...args} />}
+	</Story>
+</Canvas>
+
+## Pattern
+
+It's possible to define a pattern which will be checked each time a user types a value. This can e.g. be used only to allow numeric inputs.
+
+```jsx
+<Input type="tel" pattern="^$|^[0-9]+$" label="Only numeric" name="pattern-input" />
+```
+
+<Canvas>
+	<Story
+		name="Pattern"
+		args={{
+			name: "pattern-input",
+			label: "Only numeric ",
+			type: "tel",
+			pattern: "^$|^[0-9]+$"
+		}}>
+		{(args) => <Input {...args} />}
+	</Story>
+</Canvas>

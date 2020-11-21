@@ -13,20 +13,28 @@
 	},
 	"scripts": {
 		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern,cjs",
-		"start": "microbundle watch --jsx React.createElement --css-modules false --no-compress --format modern,cjs",
+		"start": "npm run build-storybook",
 		"build-example": "cd example && npm i && npm run build",
 		"lint": "npx eslint src/**/*.{js,ts,tsx} --quiet --fix",
 		"format": "npx prettier --write src/**/*.{js,ts,tsx}",
 		"release": "npx semantic-release",
 		"preinstall": "node -e \"!process.env.npm_config_user_agent.startsWith('npm/') && !console.log('Use npm to install dependencies in this repository\\n') && process.exit(1)\"",
-		"install-all": "npm i && cd example && npm i"
+		"install-all": "npm i && cd example && npm i",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook -o example"
 	},
 	"peerDependencies": {
 		"react": "^16.13.1"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.12.3",
 		"@babel/plugin-syntax-nullish-coalescing-operator": "^7.8.3",
 		"@semantic-release/git": "^9.0.0",
+		"@storybook/addon-actions": "^6.1.2",
+		"@storybook/addon-essentials": "^6.1.2",
+		"@storybook/addon-links": "^6.1.2",
+		"@storybook/preset-create-react-app": "^3.1.5",
+		"@storybook/react": "^6.1.2",
 		"@types/cleave.js": "^1.4.3",
 		"@types/node": "^14.11.8",
 		"@types/react": "^16.9.52",
@@ -37,6 +45,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.4.0",
 		"@typescript-eslint/parser": "^4.4.0",
 		"babel-eslint": "^10.1.0",
+		"babel-loader": "^8.2.1",
 		"cleave.js": "^1.6.0",
 		"conventional-changelog-conventionalcommits": "^4.4.0",
 		"cross-env": "^7.0.2",
@@ -46,6 +55,7 @@
 		"eslint-config-standard": "^15.0.1",
 		"eslint-config-standard-react": "^10.0.0",
 		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-mdx": "^1.8.2",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"eslint-plugin-promise": "^4.2.1",
@@ -76,5 +86,6 @@
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/"
-	}
+	},
+	"dependencies": {}
 }

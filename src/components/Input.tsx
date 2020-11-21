@@ -13,7 +13,7 @@ interface InputSettings {
 	placeholderErrorMessage?: boolean;
 }
 
-interface InputProps extends GenericInputProps<string> {
+export interface InputProps extends GenericInputProps<string> {
 	required?: boolean;
 	autoComplete?: AutoCompleteTypes;
 	pattern?: string;

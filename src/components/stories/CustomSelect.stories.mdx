@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import CustomSelect from "../CustomSelect";
+import "./style.sass";
+import "./input.sass";
+import { FAVORITE_COLORS } from "./SELECT_OPTIONS.ts";
+
+<Meta title="Components/CustomSelect" component={CustomSelect} />
+
+# CustomSelect
+
+## Default
+
+```jsx
+<Input label="Only numeric" name="default-input" />
+```
+
+<Canvas>
+	<Story
+		name="Default"
+		args={{
+			name: "default-custom-select",
+			label: "Label name",
+			options: FAVORITE_COLORS
+		}}>
+		{(args) => <CustomSelect {...args} />}
+	</Story>
+</Canvas>

@@ -19,6 +19,17 @@ jobs:
             - name: "🚦 Build package"
               run: npm run build
 
+            - name: "📖 Build Storybook"
+              run: npm run build-storybook
+
+            - name: 🚀 Deploy Storybook
+              uses: JamesIves/github-pages-deploy-action@3.6.2
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: example # The folder the action should deploy.
+                  CLEAN: true
+
             - name: Semantic Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
