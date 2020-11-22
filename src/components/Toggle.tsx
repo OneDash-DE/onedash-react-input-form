@@ -8,7 +8,6 @@ export interface ToggleProps extends GenericInputProps<boolean> {
 	native?: boolean;
 	required?: boolean;
 	settings?: BooleanSettings;
-	numberOutput?: boolean;
 }
 
 export default class Toggle extends GenericInput<boolean, ToggleProps> {
@@ -51,13 +50,8 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 
 	sendOnChange = (value: boolean) => {
 		this.validate();
-		if (this.props.onChange) this.props.onChange(this.getVal(value) as any);
-		if (this.props._change) this.props._change({ name: this.props.name, value: this.getVal(value) as any });
-	};
-
-	getVal = (val: boolean) => {
-		if (!this.props.numberOutput) return val;
-		return val ? 1 : 0;
+		if (this.props.onChange) this.props.onChange(value);
+		if (this.props._change) this.props._change({ name: this.props.name, value });
 	};
 
 	onKeyDown = (e: any) => {
