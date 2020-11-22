@@ -4,13 +4,14 @@ import GenericInput from "./GenericInput";
 interface BooleanSettings {
 	requiredNotVisible?: boolean;
 }
-interface ToggleProps extends GenericInputProps<boolean> {
+interface ToggleProps extends GenericInputProps<boolean | 1 | 0> {
 	native?: boolean;
 	required?: boolean;
 	settings?: BooleanSettings;
+	numberOutput?: boolean;
 }
 
-export default class Toggle extends GenericInput<boolean, ToggleProps> {
+export default class Toggle extends GenericInput<boolean | 1 | 0, ToggleProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
@@ -50,8 +51,13 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 
 	sendOnChange = (value: boolean) => {
 		this.validate();
-		if (this.props.onChange) this.props.onChange(value);
-		if (this.props._change) this.props._change({ name: this.props.name, value });
+		if (this.props.onChange) this.props.onChange(this.getVal(value));
+		if (this.props._change) this.props._change({ name: this.props.name, value: this.getVal(value) });
+	};
+
+	getVal = (val: boolean) => {
+		if (!this.props.numberOutput) return val;
+		return val ? 1 : 0;
 	};
 
 	onKeyDown = (e: any) => {
