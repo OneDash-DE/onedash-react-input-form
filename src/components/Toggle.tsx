@@ -1,17 +1,17 @@
 import React, { ChangeEvent } from "react";
 import { ErrorCodes, GenericInputProps } from "../types";
 import GenericInput from "./GenericInput";
-interface BooleanSettings {
+export interface BooleanSettings {
 	requiredNotVisible?: boolean;
 }
-interface ToggleProps extends GenericInputProps<boolean | 1 | 0> {
+export interface ToggleProps extends GenericInputProps<boolean> {
 	native?: boolean;
 	required?: boolean;
 	settings?: BooleanSettings;
 	numberOutput?: boolean;
 }
 
-export default class Toggle extends GenericInput<boolean | 1 | 0, ToggleProps> {
+export default class Toggle extends GenericInput<boolean, ToggleProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
@@ -51,8 +51,8 @@ export default class Toggle extends GenericInput<boolean | 1 | 0, ToggleProps> {
 
 	sendOnChange = (value: boolean) => {
 		this.validate();
-		if (this.props.onChange) this.props.onChange(this.getVal(value));
-		if (this.props._change) this.props._change({ name: this.props.name, value: this.getVal(value) });
+		if (this.props.onChange) this.props.onChange(this.getVal(value) as any);
+		if (this.props._change) this.props._change({ name: this.props.name, value: this.getVal(value) as any });
 	};
 
 	getVal = (val: boolean) => {
