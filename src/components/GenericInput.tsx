@@ -100,7 +100,7 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 	};
 
 	protected buildClassList = (componentName: string) => {
-		let classList = `onedash-form-component ${componentName}`;
+		let classList = `onedash-form-v2-component ${componentName}`;
 		if (this.state.value && this.state.value.length > 0) {
 			classList += " filled";
 		}
