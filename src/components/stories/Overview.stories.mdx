@@ -46,3 +46,31 @@ class ComponentWithForm extends Component {
 ## Styling
 
 Most components come without any style. You can adjust it yourself by CSS. If you like the style in this documentation, you can use our stylesheet from [here](https://github.com/OneDash-DE/onedash-react-input-form/blob/master/src/components/stories/input.sass).
+
+## Name
+
+Each component get's a name which will is necessary for the form component. The name defines a property name / path where to store the input value.
+
+_Example:_
+
+```javascript
+<Form onChange={this.niceFunction}>
+	<Input name="firstName" placeholder="Here comes your first name" label="First name (Label)" required />
+	<Input name="lastName" placeholder="Here comes your last name" label="Last name (Label)" required />
+	<Input name="arr[0].test" placeholder="Testinput" label="Testinput (Label)" required />
+</Form>
+```
+
+When you now type in some values in firstname or lastname the onChange event is fired. It contains all the current values of the form in the following style:
+
+```json
+{
+	"firstName": "John",
+	"lastName": "Doe",
+	"arr": [
+		{
+			"test": "Special testing input"
+		}
+	]
+}
+```
