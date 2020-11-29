@@ -5,7 +5,7 @@ export default class Button extends React.Component<ButtonProps, any> {
 	button = React.createRef<HTMLButtonElement>();
 
 	private buildClassName = () => {
-		let className = "onedash-button";
+		let className = "onedash-button-v2";
 		if (this.props.className) {
 			className += " " + this.props.className;
 		}
