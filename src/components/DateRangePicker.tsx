@@ -106,13 +106,18 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 	}
 
 	public reset = () => {
-		this.resetted = false;
-		if (this.props.onChange) this.props.onChange(undefined);
-		if (this.props._change) this.props._change({ name: this.props.name, value: undefined });
-		this.setState({
-			value: DEFAULT_VALUE,
-			errorMessage: undefined,
-			valid: true
+		return new Promise<void>((resolve) => {
+			this.resetted = false;
+			if (this.props.onChange && this.props.changeTriggerReset) this.props.onChange(undefined);
+			if (this.props._change) this.props._change({ name: this.props.name, value: undefined });
+			this.setState(
+				{
+					value: DEFAULT_VALUE,
+					errorMessage: undefined,
+					valid: true
+				},
+				resolve
+			);
 		});
 	};
 
