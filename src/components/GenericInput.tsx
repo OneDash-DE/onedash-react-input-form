@@ -64,7 +64,7 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 
 	public reset = () => {
 		this.resetted = false;
-		if (this.props.onChange) this.props.onChange(undefined);
+		if (this.props.onChange && this.props.changeTriggerReset) this.props.onChange(undefined);
 		if (this.props._change) this.props._change({ name: this.props.name, value: undefined });
 		this.setState({
 			value: this.formatValue ? this.formatValue(undefined) : undefined,

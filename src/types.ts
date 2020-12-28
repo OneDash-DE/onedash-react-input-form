@@ -54,6 +54,11 @@ export interface GenericInputProps<ValueType> {
 	onChange?: (value?: ValueType) => any;
 
 	/**
+	 * A flag which has to be set to true if you want to trigger onChange when the input get's resetted
+	 */
+	changeTriggerReset?: boolean;
+
+	/**
 	 * OnBlur Event
 	 */
 	onBlur?: (value?: ValueType) => any;
