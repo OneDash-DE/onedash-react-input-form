@@ -14,6 +14,7 @@ import { ErrorMessages, ValueLabelPair } from "./types";
 import { DE, EN } from "./locales";
 import dayjs from "dayjs";
 import { setLocaleMessages } from "./ErrorMessages";
+import { get, set } from "./Utils";
 
 const FormLocales = {
 	DE,
@@ -35,7 +36,9 @@ export {
 	ErrorMessages,
 	setLocaleMessages,
 	FormLocales,
-	VerificationCode
+	VerificationCode,
+	set,
+	get
 };
 
 declare module "dayjs" {

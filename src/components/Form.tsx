@@ -37,7 +37,7 @@ export interface FormProps {
 }
 
 class Form extends React.Component<FormProps> {
-	references: { ref: any; name: string }[] = [];
+	references: { ref: GenericInput<any, any>; name: string }[] = [];
 	state = {
 		valid: true
 	};
@@ -129,14 +129,16 @@ class Form extends React.Component<FormProps> {
 	};
 
 	public resetForm = () => {
+		const p: Promise<void>[] = [];
 		this.references.forEach((entry) => {
-			if (entry.ref) entry.ref.reset();
+			if (entry.ref) p.push(entry.ref.reset());
 		});
 
 		if (this.references.length > 0) {
 			const entry = this.references[0];
 			if (entry.ref) entry.ref.focus();
 		}
+		return Promise.all(p);
 	};
 
 	/**
@@ -189,7 +191,7 @@ class Form extends React.Component<FormProps> {
 		this.references.forEach((entry) => {
 			if (entry.ref) {
 				const valuePair = entry.ref.getValue();
-				if (valuePair.name && valuePair.name !== "_") {
+				if (valuePair && valuePair.name && valuePair.name !== "_") {
 					set(valuePair.name, values, valuePair.value);
 				}
 			}

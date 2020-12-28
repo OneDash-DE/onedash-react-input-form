@@ -32,7 +32,13 @@
 		"react/jsx-fragments": 0,
 		"react/no-unused-prop-types": 0,
 		"import/export": 0,
-
+		"eol-last": "off",
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "off"
+			}
+		],
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": "error",
 		"react/no-did-update-set-state": 0,
