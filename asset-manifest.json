@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "./static/css/main.2cc58bcc.chunk.css",
-    "main.js": "./main.4ea044c9f5b5164ecf7c.bundle.js",
+    "main.js": "./main.29c45596b16f7fb0637d.bundle.js",
     "main.css.map": "./static/css/main.2cc58bcc.chunk.css.map",
-    "main.js.map": "./main.4ea044c9f5b5164ecf7c.bundle.js.map",
-    "runtime~main.js": "./runtime~main.4ea044c9f5b5164ecf7c.bundle.js",
-    "runtime~main.js.map": "./runtime~main.4ea044c9f5b5164ecf7c.bundle.js.map",
+    "main.js.map": "./main.29c45596b16f7fb0637d.bundle.js.map",
+    "runtime~main.js": "./runtime~main.29c45596b16f7fb0637d.bundle.js",
+    "runtime~main.js.map": "./runtime~main.29c45596b16f7fb0637d.bundle.js.map",
     "vendors~main.css": "./static/css/vendors~main.8f0c9fae.chunk.css",
-    "vendors~main.js": "./vendors~main.4ea044c9f5b5164ecf7c.bundle.js",
+    "vendors~main.js": "./vendors~main.29c45596b16f7fb0637d.bundle.js",
     "vendors~main.css.map": "./static/css/vendors~main.8f0c9fae.chunk.css.map",
-    "vendors~main.js.map": "./vendors~main.4ea044c9f5b5164ecf7c.bundle.js.map",
+    "vendors~main.js.map": "./vendors~main.29c45596b16f7fb0637d.bundle.js.map",
     "iframe.html": "./iframe.html",
-    "vendors~main.4ea044c9f5b5164ecf7c.bundle.js.LICENSE.txt": "./vendors~main.4ea044c9f5b5164ecf7c.bundle.js.LICENSE.txt"
+    "vendors~main.29c45596b16f7fb0637d.bundle.js.LICENSE.txt": "./vendors~main.29c45596b16f7fb0637d.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
-    "runtime~main.4ea044c9f5b5164ecf7c.bundle.js",
+    "runtime~main.29c45596b16f7fb0637d.bundle.js",
     "static/css/vendors~main.8f0c9fae.chunk.css",
-    "vendors~main.4ea044c9f5b5164ecf7c.bundle.js",
+    "vendors~main.29c45596b16f7fb0637d.bundle.js",
     "static/css/main.2cc58bcc.chunk.css",
-    "main.4ea044c9f5b5164ecf7c.bundle.js"
+    "main.29c45596b16f7fb0637d.bundle.js"
   ]
 }
