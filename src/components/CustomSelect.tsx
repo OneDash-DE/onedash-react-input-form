@@ -42,15 +42,15 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 		return { valid, errorCode };
 	};
 
-	private inputChange = (value: any | any[]) => {
-		if (value !== "invalid-input") {
+	private inputChange = (obj: any) => {
+		if (obj !== "invalid-input") {
 			this.setState(
 				{
-					value
+					value: obj.value
 				},
 				() => {
-					if (this.props.onChange) this.props.onChange(value);
-					if (this.props._change) this.props._change({ name: this.props.name, value });
+					if (this.props.onChange) this.props.onChange(obj.value);
+					if (this.props._change) this.props._change({ name: this.props.name, value: obj.value });
 				}
 			);
 		}
@@ -90,6 +90,8 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 			inputPlaceholder = errorMessage;
 		}
 
+		const value = this.props.options?.find((x) => x.value === this.state.value);
+
 		return (
 			<div className={this.buildClassList("onedash-select")}>
 				{this.props.label && (
@@ -113,7 +115,7 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 						placeholder={inputPlaceholder}
 						disabled={disabled}
 						onBlur={this.onBlur}
-						value={this.state.value}
+						value={value}
 						onFocus={this.onFocus}
 						onChange={(value) => this.inputChange(value)}
 						isMulti={isMulti}

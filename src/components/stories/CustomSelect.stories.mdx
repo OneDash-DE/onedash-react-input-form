@@ -11,7 +11,7 @@ import { FAVORITE_COLORS } from "./SELECT_OPTIONS.ts";
 ## Default
 
 ```jsx
-<Input label="Only numeric" name="default-input" />
+<CustomSelect label="Label name" options={FAVORITE_COLORS} name="default-custom-select" />
 ```
 
 <Canvas>
@@ -21,6 +21,25 @@ import { FAVORITE_COLORS } from "./SELECT_OPTIONS.ts";
 			name: "default-custom-select",
 			label: "Label name",
 			options: FAVORITE_COLORS
+		}}>
+		{(args) => <CustomSelect {...args} />}
+	</Story>
+</Canvas>
+
+## With Value
+
+```jsx
+<CustomSelect value="gr7een" label="Label name" options={FAVORITE_COLORS} name="with-value-custom-select" />
+```
+
+<Canvas>
+	<Story
+		name="With Value"
+		args={{
+			name: "with-value-custom-select",
+			label: "Label name",
+			options: FAVORITE_COLORS,
+			value: "gr7een"
 		}}>
 		{(args) => <CustomSelect {...args} />}
 	</Story>
