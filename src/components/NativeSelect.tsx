@@ -1,6 +1,7 @@
 import React from "react";
 import GenericInput from "./GenericInput";
 import { AutoCompleteTypes, ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
+import errorMessages from "../ErrorMessages";
 
 interface NativeSelectSettings {
 	requiredNotVisible?: boolean;
@@ -86,7 +87,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 			});
 		}
 
-		let inputPlaceholder = placeholder ?? "Please choose ...";
+		let inputPlaceholder = placeholder ?? errorMessages()[ErrorCodes.PleaseChoose];
 		if (settings?.placeholderErrorMessage === true && valid === false && errorMessage) {
 			inputPlaceholder = errorMessage;
 		}
@@ -119,7 +120,9 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 						autoComplete={autoComplete}
 						onChange={(e) => this.inputChange(e.target.value)}
 						className="component">
-						<option value={'"invalid-input"'}>{this.props.placeholder ? this.props.placeholder : "Please choose ..."}</option>
+						<option value={'"invalid-input"'}>
+							{this.props.placeholder ? this.props.placeholder : errorMessages()[ErrorCodes.PleaseChoose]}
+						</option>
 						{options.map((option, index) => (
 							<option key={index} value={JSON.stringify(option.value)}>
 								{option.label}

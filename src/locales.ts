@@ -8,7 +8,8 @@ export const DE: ErrorMessages = {
 	[ErrorCodes.EmailWrong]: "Die angebene E-Mail ist inkorrekt",
 	[ErrorCodes.TelWrong]: "Die angegebene Telefonnummer ist inkorrekt",
 	[ErrorCodes.NullNotAllowed]: "Der Wert 0 ist nicht erlaubt",
-	[ErrorCodes.NegativeNotAllowed]: "Negative Werte sind nicht erlaubt"
+	[ErrorCodes.NegativeNotAllowed]: "Negative Werte sind nicht erlaubt",
+	[ErrorCodes.PleaseChoose]: "Bitte wählen Sie ..."
 };
 
 export const EN: ErrorMessages = {
@@ -19,5 +20,6 @@ export const EN: ErrorMessages = {
 	[ErrorCodes.EmailWrong]: "The entered email is invalid",
 	[ErrorCodes.TelWrong]: "The entered phone number is invalid",
 	[ErrorCodes.NullNotAllowed]: "Value 0 is not allowed",
-	[ErrorCodes.NegativeNotAllowed]: "Negative values are not allowed"
+	[ErrorCodes.NegativeNotAllowed]: "Negative values are not allowed",
+	[ErrorCodes.PleaseChoose]: "Please choose ..."
 };

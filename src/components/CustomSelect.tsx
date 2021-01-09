@@ -3,6 +3,7 @@ import GenericInput from "./GenericInput";
 import { ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
 import makeAnimated from "react-select/animated";
 import ReactSelect from "react-select";
+import errorMessages from "../ErrorMessages";
 const animatedComponents = makeAnimated();
 
 interface CustomSelectSettings {
@@ -85,7 +86,7 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 			});
 		}
 
-		let inputPlaceholder = placeholder ?? "Please choose ...";
+		let inputPlaceholder = placeholder ?? errorMessages()[ErrorCodes.PleaseChoose];
 		if (settings?.placeholderErrorMessage === true && valid === false && errorMessage) {
 			inputPlaceholder = errorMessage;
 		}
