@@ -8,6 +8,7 @@ import Input from "./components/Input";
 import Numeric from "./components/Numeric";
 import Textarea from "./components/Textarea";
 import Toggle from "./components/Toggle";
+import RangeSlider from "./components/RangeSlider";
 import VerificationCode from "./components/VerificationCode";
 
 import { ErrorMessages, ValueLabelPair } from "./types";
@@ -37,6 +38,7 @@ export {
 	setLocaleMessages,
 	FormLocales,
 	VerificationCode,
+	RangeSlider,
 	set,
 	get
 };
