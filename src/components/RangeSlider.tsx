@@ -2,6 +2,7 @@ import React from "react";
 import InputRange, { Range } from "react-input-range";
 import { GenericInputProps, ErrorCodes } from "../types";
 import GenericInput from "./GenericInput";
+import "react-input-range/lib/css/index.css";
 
 type SliderStateType = number | Range;
 interface RangeSliderProps extends GenericInputProps<SliderStateType> {
