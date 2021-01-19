@@ -8,7 +8,7 @@ interface RangeSliderProps extends GenericInputProps<SliderStateType> {
 	maxValue: number;
 	minValue: number;
 	defaultValue: number | Range;
-	formatLabel?: (val: number | Range) => string;
+	formatLabel?: (val: number) => string;
 	step?: number;
 	allowSameValues?: boolean;
 }
