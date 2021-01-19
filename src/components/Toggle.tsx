@@ -77,6 +77,8 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 					</label>
 				)}
 				<label className="checker">
+					{this.props.icon && <div className="input-icon">{this.props.icon}</div>}
+
 					<input
 						ref={this.reference}
 						checked={this.state.value !== undefined ? this.state.value : false}
