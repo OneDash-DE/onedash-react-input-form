@@ -25,6 +25,7 @@ interface DatePickerProps extends GenericInputProps<number> {
 	maxDate?: dayjs.Dayjs;
 	isDayBlocked?: (date: dayjs.Dayjs) => boolean;
 	langKey?: string;
+	withPortal?: boolean;
 }
 
 export default class DatePicker extends GenericInput<number, DatePickerProps> {
@@ -149,6 +150,7 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 						numberOfMonths={this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1}
 						isOutsideRange={this.checkRange}
 						isDayBlocked={this.props.isDayBlocked}
+						withPortal={this.props.withPortal}
 						onFocusChange={(e: any) => {
 							if (e.focused === true) {
 								this.onFocus();

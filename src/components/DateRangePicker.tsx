@@ -32,6 +32,8 @@ interface DateRangePickerProps extends GenericInputProps<DateRangeValueType> {
 
 	startDateId?: string;
 	endDateId?: string;
+
+	withPortal?: boolean;
 }
 
 const DEFAULT_VALUE = {
@@ -173,6 +175,7 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 					startDateId={startDateId ?? uuidv4()}
 					endDateId={endDateId ?? uuidv4()}
 					style={this.props.style}
+					withPortal={this.props.withPortal}
 				/>
 			</div>
 		);
