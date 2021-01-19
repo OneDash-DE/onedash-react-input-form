@@ -8,6 +8,7 @@ import Textarea from "../Textarea";
 import Toggle from "../Toggle";
 import CustomSelect from "../CustomSelect";
 import Numeric from "../Numeric";
+import RangeSlider from "../RangeSlider";
 import { GENDER_OPTIONS, FAVORITE_COLORS } from "./SELECT_OPTIONS";
 import "./style.sass";
 import "./input.sass";
@@ -110,6 +111,13 @@ import "./input.sass";
 						delimiter="."
 						value={113252.45}
 						onChange={(val) => console.log(val)}
+					/>
+					<RangeSlider
+						name="range-slider"
+						formatLabel={(val) => ["A", "B", "C", "D", "E", "F"][val]}
+						minValue={1}
+						maxValue={5}
+						defaultValue={{ min: 2, max: 3 }}
 					/>
 				</div>
 			</Form>

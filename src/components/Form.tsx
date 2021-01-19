@@ -12,6 +12,7 @@ import Numeric from "./Numeric";
 import CustomSelect from "./CustomSelect";
 import { set } from "../Utils";
 import VerificationCode from "./VerificationCode";
+import RangeSlider from "./RangeSlider";
 
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
@@ -61,6 +62,7 @@ class Form extends React.Component<FormProps> {
 				child.type === Textarea ||
 				child.type === DatePicker ||
 				child.type === DateRangePicker ||
+				child.type === RangeSlider ||
 				child.type === Select ||
 				child.type === CustomSelect ||
 				child.type === VerificationCode ||

@@ -1,0 +1,78 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import "react-input-range/lib/css/index.css";
+import RangeSlider from "../RangeSlider";
+import "./style.sass";
+import "./input.sass";
+
+<Meta title="Components/Range Slider" component={RangeSlider} />
+
+# Input
+
+The range slider allowes to select either one value or a range of a number range
+
+## Default
+
+```jsx
+<RangeSlider name="default-range-slider" minValue={0} maxValue={10} defaultValue={5} />
+```
+
+<Canvas>
+	<Story
+		name="Default"
+		args={{
+			name: "default-input",
+			label: "Label name",
+			minValue: 1,
+			maxValue: 10,
+			defaultValue: 5
+		}}>
+		{(args) => <RangeSlider {...args} />}
+	</Story>
+</Canvas>
+
+## Multi value
+
+```jsx
+<RangeSlider name="default-range-slider" minValue={0} maxValue={10} defaultValue={{ min: 3, max: 5 }} />
+```
+
+<Canvas>
+	<Story
+		name="Multi value"
+		args={{
+			name: "default-input",
+			label: "Label name",
+			minValue: 1,
+			maxValue: 10,
+			defaultValue: { min: 3, max: 5 }
+		}}>
+		{(args) => <RangeSlider {...args} />}
+	</Story>
+</Canvas>
+
+## Format Label
+
+```jsx
+<RangeSlider
+	name="default-range-slider"
+	formatLabel={(val) => ["A", "B", "C", "D", "E", "F"][val]}
+	minValue={1}
+	maxValue={5}
+	defaultValue={{ min: 2, max: 3 }}
+/>
+```
+
+<Canvas>
+	<Story
+		name="Format value"
+		args={{
+			name: "default-input",
+			label: "Label name",
+			minValue: 1,
+			maxValue: 5,
+			formatLabel: (val) => ["A", "B", "C", "D", "E", "F"][val],
+			defaultValue: { min: 2, max: 3 }
+		}}>
+		{(args) => <RangeSlider {...args} />}
+	</Story>
+</Canvas>
