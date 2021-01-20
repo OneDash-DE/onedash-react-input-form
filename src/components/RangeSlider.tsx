@@ -63,7 +63,7 @@ export default class RangeSlider extends GenericInput<SliderStateType, RangeSlid
 
 	private onChange = (value: number | Range) => {
 		this.resetted = false;
-		if (!value) return;
+		if (value === undefined) return;
 		this.setState(
 			{
 				value
