@@ -206,7 +206,7 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 													</svg>
 												)}
 											</div>
-											<div className="content-placeholder">{this.props.placeholder}</div>´
+											{this.props.placeholder && <div className="content-placeholder">{this.props.placeholder}</div>}
 											{errorMessage && <div className="error-message">{errorMessage}</div>}
 										</div>
 									</div>
