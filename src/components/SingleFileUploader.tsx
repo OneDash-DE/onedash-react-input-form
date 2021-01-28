@@ -10,7 +10,7 @@ interface SignedRequest {
 }
 
 interface SingleFileUploaderProps extends GenericInputProps<string> {
-	getSignedRequest: (file: File) => Promise<SignedRequest>;
+	getSignedRequest: (file: File, extension: string) => Promise<SignedRequest | undefined | null>;
 	required?: boolean;
 	minSize?: number;
 	maxSize?: number;
@@ -116,13 +116,16 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 
 	private onDrop = async (files: File[]) => {
 		const extension = files[0]?.name?.split(".").pop()?.toLowerCase();
+		if (!extension) return;
 		const isImage = !!extension?.match(/(jpg|jpeg|gif|png|tiff|bmp)/);
 
 		const droppedFile: FileState = { file: files[0], isUploading: false, progress: 0, isImage };
 		this.setState({ droppedFile, errorMessage: undefined });
 		this.props
-			.getSignedRequest(droppedFile.file)
-			.then(({ key, signedRequest, url }) => {
+			.getSignedRequest(droppedFile.file, extension)
+			.then((res) => {
+				if (!res) return;
+				const { key, signedRequest, url } = res;
 				droppedFile.signedRequest = signedRequest;
 				droppedFile.url = url;
 				droppedFile.key = key;
