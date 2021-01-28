@@ -7,14 +7,23 @@
 		"prettier/standard",
 		"prettier/react",
 		"plugin:@typescript-eslint/eslint-recommended",
-		"plugin:mdx/recommended"
+		"plugin:mdx/recommended",
+		"plugin:react/recommended"
 	],
 	"plugins": ["@typescript-eslint"],
 	"env": {
 		"node": true
 	},
+	"overrides": [
+		{
+			"files": "*.mdx",
+			"parser": "eslint-mdx",
+			"extends": "plugin:mdx/recommended"
+		}
+	],
 	"parserOptions": {
 		"ecmaVersion": 2020,
+		"sourceType": "module",
 		"ecmaFeatures": {
 			"legacyDecorators": true,
 			"jsx": true
@@ -22,7 +31,7 @@
 	},
 	"settings": {
 		"react": {
-			"version": "16"
+			"version": "detect"
 		}
 	},
 	"rules": {

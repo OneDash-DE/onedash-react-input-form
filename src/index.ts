@@ -16,6 +16,7 @@ import { DE, EN } from "./locales";
 import dayjs from "dayjs";
 import { setLocaleMessages } from "./ErrorMessages";
 import { get, set } from "./Utils";
+import SingleFileUploader from "./components/SingleFileUploader";
 
 const FormLocales = {
 	DE,
@@ -40,7 +41,8 @@ export {
 	VerificationCode,
 	RangeSlider,
 	set,
-	get
+	get,
+	SingleFileUploader
 };
 
 declare module "dayjs" {

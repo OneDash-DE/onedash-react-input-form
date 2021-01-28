@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import SingleFileUploader from "../SingleFileUploader";
+import "./style.sass";
+import "./input.sass";
+
+<Meta title="Components/Simgle File Uploader" component={SingleFileUploader} />
+
+# Input
+
+This input allowes the uploading of images and other files.
+
+## Default
+
+```jsx
+const getSignedRequest = (file) => {
+	return new Promise((resolve) => {
+		resolve({
+			signedRequest: "https://onedash-example.com/example-key?signed=random-id",
+			url: "https://onedash-example.com/example-key",
+			key: "example-key"
+		});
+	});
+};
+
+<SingleFileUploader getSignedRequest={getSignedRequest} name="default-uploader" />;
+```
+
+<Canvas>
+	<Story
+		name="Default"
+		args={{
+			name: "default-file-input",
+			label: "Upload a file",
+			getSignedRequest: () => {
+				return new Promise((resolve) => {
+					setTimeout(() => {
+						resolve({
+							signedRequest: "https://onedash-example.com/example-key?signed=random-id",
+							url: "https://onedash-example.com/example-key",
+							key: "example-key"
+						});
+					}, 10000000);
+				});
+			}
+		}}>
+		{(args) => <SingleFileUploader {...args} />}
+	</Story>
+</Canvas>

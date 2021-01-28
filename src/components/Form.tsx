@@ -13,6 +13,7 @@ import CustomSelect from "./CustomSelect";
 import { set } from "../Utils";
 import VerificationCode from "./VerificationCode";
 import RangeSlider from "./RangeSlider";
+import SingleFileUploader from "./SingleFileUploader";
 
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
@@ -66,7 +67,8 @@ class Form extends React.Component<FormProps> {
 				child.type === Select ||
 				child.type === CustomSelect ||
 				child.type === VerificationCode ||
-				child.type === Toggle
+				child.type === Toggle ||
+				child.type === SingleFileUploader
 			) {
 				let className = "";
 				if (child.props.className) {

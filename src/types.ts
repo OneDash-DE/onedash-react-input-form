@@ -9,7 +9,8 @@ export enum ErrorCodes {
 	TelWrong,
 	NullNotAllowed,
 	NegativeNotAllowed,
-	PleaseChoose
+	PleaseChoose,
+	ImageRequired
 }
 export type ErrorMessages = { [key in ErrorCodes]: string };
 

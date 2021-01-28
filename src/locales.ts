@@ -9,7 +9,8 @@ export const DE: ErrorMessages = {
 	[ErrorCodes.TelWrong]: "Die angegebene Telefonnummer ist inkorrekt",
 	[ErrorCodes.NullNotAllowed]: "Der Wert 0 ist nicht erlaubt",
 	[ErrorCodes.NegativeNotAllowed]: "Negative Werte sind nicht erlaubt",
-	[ErrorCodes.PleaseChoose]: "Bitte wählen Sie ..."
+	[ErrorCodes.PleaseChoose]: "Bitte wählen Sie ...",
+	[ErrorCodes.ImageRequired]: "Die Angabe einer Datei ist verpflichtend"
 };
 
 export const EN: ErrorMessages = {
@@ -21,5 +22,6 @@ export const EN: ErrorMessages = {
 	[ErrorCodes.TelWrong]: "The entered phone number is invalid",
 	[ErrorCodes.NullNotAllowed]: "Value 0 is not allowed",
 	[ErrorCodes.NegativeNotAllowed]: "Negative values are not allowed",
-	[ErrorCodes.PleaseChoose]: "Please choose ..."
+	[ErrorCodes.PleaseChoose]: "Please choose ...",
+	[ErrorCodes.ImageRequired]: "You have to upload an image"
 };

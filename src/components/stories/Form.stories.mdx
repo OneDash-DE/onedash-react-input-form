@@ -39,7 +39,6 @@ import "./input.sass";
 				className="testing-form"
 				submitText="Submit form"
 				resetText="Cancel form"
-				errorIcon={<ErrorIcon />}
 				validateOnSubmit
 				{...args}>
 				<h2>General information</h2>
@@ -64,10 +63,10 @@ import "./input.sass";
 				</div>
 				<h2>More information</h2>
 				<div className="fieldset">
-					<DateRangePicker langKey={"de"} required label="Daterange" name="date-range" />
-					<DatePicker langKey={"de"} required name="date" label="Date" icon={<i className="lni lni-calendar"></i>} />
-					<Input required name="email" type="email" placeholder="E-Mail" icon={<i className="lni lni-envelope"></i>} />
-					<Input required name="tel" type="tel" placeholder="Phone number" icon={<i className="lni lni-phone"></i>} />
+					<DateRangePicker langKey="de" required label="Daterange" name="date-range" />
+					<DatePicker langKey="de" required name="date" label="Date" icon={<i className="lni lni-calendar" />} />
+					<Input required name="email" type="email" placeholder="E-Mail" icon={<i className="lni lni-envelope" />} />
+					<Input required name="tel" type="tel" placeholder="Phone number" icon={<i className="lni lni-phone" />} />
 					<div className="fieldset">
 						<Input icon={<i className="lni lni-direction-alt" />} name="street" type="text" placeholder="Street" required />
 						<Input icon={<i className="lni lni-home" />} name="housenumber" type="text" placeholder="Housenumber" required />
@@ -75,7 +74,7 @@ import "./input.sass";
 						<Input icon={<i className="lni lni-apartment" />} name="city" type="text" placeholder="City" required />
 					</div>
 					<Textarea
-						icon={<i className="lni lni-text-align-justify"></i>}
+						icon={<i className="lni lni-text-align-justify" />}
 						name="text"
 						placeholder="Ihr Text ..."
 						value="Lorem ipsum dolorem sit ... "
@@ -106,7 +105,7 @@ import "./input.sass";
 						label="Price"
 						placeholder="Enter a price"
 						name="price"
-						icon={<i className="lni lni-dollar"></i>}
+						icon={<i className="lni lni-dollar" />}
 						numeralDecimalMark=","
 						delimiter="."
 						value={113252.45}
