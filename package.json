@@ -41,7 +41,7 @@
 		"@types/react": "^17.0.0",
 		"@types/react-dates": "^21.8.0",
 		"@types/react-dom": "^17.0.0",
-		"@types/react-select": "^3.0.22",
+		"@types/react-select": "^4.0.11",
 		"@typescript-eslint/eslint-plugin": "^4.4.0",
 		"@typescript-eslint/parser": "^4.4.0",
 		"babel-eslint": "^10.1.0",
