@@ -38,7 +38,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		let errorCode: ErrorCodes = ErrorCodes.Default;
 		const value = Number(this.state.value);
 
-		if (this.props.required === true && value === undefined) {
+		if (this.props.required === true && (value === undefined || value === null)) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
 		}
@@ -54,8 +54,8 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		return { valid, errorCode };
 	};
 
-	formatValue = (value?: number) => {
-		if (!value) return;
+	formatValue = (value?: number | null) => {
+		if (value === null || value === undefined) return;
 
 		let val = String(value);
 		if (this.props.numeralDecimalMark) {

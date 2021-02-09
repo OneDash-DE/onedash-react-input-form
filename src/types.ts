@@ -43,7 +43,7 @@ export interface GenericInputProps<ValueType> {
 	/**
 	 * Value of the component
 	 */
-	value?: ValueType;
+	value?: ValueType | null;
 
 	/**
 	 * @private onChange listener for form component

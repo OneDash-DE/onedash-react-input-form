@@ -38,7 +38,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 		let errorCode: ErrorCodes = ErrorCodes.Default;
 		const value = this.state.value;
 
-		if (this.props.required === true && (value === undefined || String(value)?.length === 0)) {
+		if (this.props.required === true && (value === undefined || value === null || String(value)?.length === 0)) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
 		}

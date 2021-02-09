@@ -187,7 +187,7 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 
 				{!value && (
 					<>
-						{droppedFile === undefined ? (
+						{droppedFile === undefined || droppedFile === null ? (
 							<Dropzone
 								accept={this.props.allowedTypes}
 								minSize={minSize}
