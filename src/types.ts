@@ -48,12 +48,12 @@ export interface GenericInputProps<ValueType> {
 	/**
 	 * @private onChange listener for form component
 	 */
-	_change?: (obj: { value?: ValueType; name: string }) => any;
+	_change?: (obj: { value?: ValueType | null; name: string }) => any;
 
 	/**
 	 * OnChange listener which returns the value of the component
 	 */
-	onChange?: (value?: ValueType) => any;
+	onChange?: (value?: ValueType | null) => any;
 
 	/**
 	 * A flag which has to be set to true if you want to trigger onChange when the input get's resetted
@@ -63,7 +63,7 @@ export interface GenericInputProps<ValueType> {
 	/**
 	 * OnBlur Event
 	 */
-	onBlur?: (value?: ValueType) => any;
+	onBlur?: (value?: ValueType | null) => any;
 
 	/**
 	 * OnFocus Event
@@ -73,7 +73,7 @@ export interface GenericInputProps<ValueType> {
 	/**
 	 * OnValidate additional validation step for this component
 	 */
-	onValidate?: (value?: ValueType) => boolean | { valid: boolean; errorMessage?: string };
+	onValidate?: (value?: ValueType | null) => boolean | { valid: boolean; errorMessage?: string };
 
 	/**
 	 * React styles for this component
