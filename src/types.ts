@@ -76,6 +76,11 @@ export interface GenericInputProps<ValueType> {
 	onValidate?: (value?: ValueType | null) => boolean | { valid: boolean; errorMessage?: string };
 
 	/**
+	 * A save delay in ms. If you don't provide a delay, 200ms will be used.
+	 */
+	saveDelay?: number;
+
+	/**
 	 * React styles for this component
 	 */
 	style?: React.CSSProperties;

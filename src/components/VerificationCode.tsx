@@ -101,7 +101,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
 					this.saveInput();
-				}, 200) as any;
+				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
 		}

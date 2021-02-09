@@ -33,6 +33,11 @@ export interface FormProps {
 
 	style?: React.CSSProperties;
 
+	/**
+	 * Input save delay for input or textarea props. Use this to prevent to much onChange calls
+	 */
+	inputSaveDelay?: number;
+
 	onValidate?: (values: any, control: Form) => boolean;
 	onError?: (errorCode: ErrorCodes, component: GenericInput<any, any>, value: any) => string;
 	errorIcon?: React.ReactNode;
@@ -90,6 +95,7 @@ class Form extends React.Component<FormProps> {
 						className,
 						key: i,
 						_change: this.onChange,
+						saveDelay: this.props.inputSaveDelay ?? undefined,
 						onError: child.props.onError ?? this.props.onError,
 						errorIcon: child.props.errorIcon ?? this.props.errorIcon
 					},

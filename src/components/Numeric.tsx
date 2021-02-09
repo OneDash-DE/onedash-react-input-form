@@ -119,7 +119,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
 					this.saveInput();
-				}, 200) as any;
+				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
 		}

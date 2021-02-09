@@ -79,7 +79,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
 					this.saveInput();
-				}, 200) as any;
+				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
 		}
