@@ -151,7 +151,7 @@ class Form extends React.Component<FormProps> {
 		return Promise.all(p);
 	};
 
-	public loadDefaultValues = () => {
+	public loadDefaultValues = (): void => {
 		this.references.forEach((entry) => {
 			if (entry.ref) entry.ref.loadDefaultValue();
 		});
