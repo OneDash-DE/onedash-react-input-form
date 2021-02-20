@@ -45,14 +45,6 @@ class Textarea extends GenericInput<string, TextareaProps> {
 		return { valid, errorCode };
 	};
 
-	formatValue = (value?: any) => {
-		if (value) {
-			return value;
-		} else {
-			return undefined;
-		}
-	};
-
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		this.resetted = false;
 		const value: string | number = e.target.value;
@@ -64,21 +56,19 @@ class Textarea extends GenericInput<string, TextareaProps> {
 		);
 	};
 
-	private saveInput = (value?: string) => {
+	private saveInput = (value?: string | null) => {
 		if (!this.isChanging) {
 			this.isChanging = true;
 			this.saveTimeout = undefined;
-			if (!value) value = this.waitingValue;
+			if (value === null) value = this.waitingValue;
 
-			if (value !== undefined) {
-				if (this.props.onChange) this.props.onChange(value);
-				if (this.props._change) this.props._change({ name: this.props.name, value });
-			}
+			if (this.props.onChange) this.props.onChange(value);
+			if (this.props._change) this.props._change({ name: this.props.name, value });
 		} else {
 			if (!this.saveTimeout) {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
-					this.saveInput();
+					this.saveInput(null);
 				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
@@ -86,8 +76,12 @@ class Textarea extends GenericInput<string, TextareaProps> {
 	};
 
 	componentDidMount() {
-		this.setState({ value: this.formatValue(this.props.value) });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value });
+	};
 
 	componentDidUpdate(_lastProps: TextareaProps) {
 		const t = JSON.stringify;

@@ -28,8 +28,12 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 	}
 
 	componentDidMount() {
-		this.setState({ value: this.props.value ? this.props.value : false });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value ?? false });
+	};
 
 	componentDidUpdate(lastProps: ToggleProps) {
 		const value = this.props.value ? this.props.value : false;

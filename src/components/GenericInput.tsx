@@ -86,6 +86,10 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 		}
 	};
 
+	public abstract loadDefaultValue = (): void => {
+		throw new Error("Valdiate is not implemented yet");
+	};
+
 	protected onFocus = () => {
 		if (this.props.onFocus) this.props.onFocus();
 		this.setState({

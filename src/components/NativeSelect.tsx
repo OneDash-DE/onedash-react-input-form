@@ -65,8 +65,12 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 	};
 
 	componentDidMount() {
-		this.loadSelected();
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value });
+	};
 
 	componentDidUpdate(lastProps: NativeSelectProps) {
 		// Default Value is defined

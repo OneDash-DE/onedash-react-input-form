@@ -46,6 +46,11 @@ export interface GenericInputProps<ValueType> {
 	value?: ValueType | null;
 
 	/**
+	 * Default value of the input
+	 */
+	defaultValue?: ValueType | null;
+
+	/**
 	 * @private onChange listener for form component
 	 */
 	_change?: (obj: { value?: ValueType | null; name: string }) => any;
@@ -89,6 +94,8 @@ export interface GenericInputProps<ValueType> {
 	errorIcon?: React.ReactNode;
 
 	onError?: (errorCode: ErrorCodes, component: GenericInput<any, any>, value?: ValueType) => string;
+
+	disableFormTrigger?: boolean;
 }
 
 export interface GenericInputState {

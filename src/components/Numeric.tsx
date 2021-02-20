@@ -85,8 +85,8 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		);
 	};
 
-	private getNumber = (val: string) => {
-		if (!val) return;
+	private getNumber = (val?: string | null) => {
+		if (val === undefined || val === null) return;
 
 		// Remove delimiter(s)
 		if (this.props.delimiter) {
@@ -94,7 +94,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		}
 
 		this.props.delimiters?.forEach((d) => {
-			val = val.replace(d, "");
+			val = (val as any).replace(d, "");
 		});
 
 		// Exchange decimal mark
@@ -104,21 +104,19 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 		return Number(val);
 	};
 
-	private saveInput = (value?: string) => {
+	private saveInput = (value?: string | null) => {
 		if (!this.isChanging) {
 			this.isChanging = true;
 			this.saveTimeout = undefined;
-			if (!value) value = this.waitingValue;
+			if (value === null) value = this.waitingValue;
 
-			if (value !== undefined) {
-				if (this.props.onChange) this.props.onChange(this.getNumber(value));
-				if (this.props._change) this.props._change({ name: this.props.name, value: this.getNumber(value) });
-			}
+			if (this.props.onChange) this.props.onChange(this.getNumber(value));
+			if (this.props._change) this.props._change({ name: this.props.name, value: this.getNumber(value) });
 		} else {
 			if (!this.saveTimeout) {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
-					this.saveInput();
+					this.saveInput(null);
 				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
@@ -126,8 +124,12 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 	};
 
 	componentDidMount() {
-		this.setState({ value: this.formatValue(this.props.value) });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.formatValue(this.props.defaultValue ?? this.props.value) });
+	};
 
 	componentDidUpdate(_lastProps: NumericProps) {
 		const t = JSON.stringify;

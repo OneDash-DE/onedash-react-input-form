@@ -63,8 +63,12 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 	};
 
 	componentDidMount() {
-		this.loadSelected();
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value });
+	};
 
 	componentDidUpdate(lastProps: CustomSelectProps) {
 		// Default Value is defined

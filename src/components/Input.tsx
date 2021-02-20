@@ -123,21 +123,18 @@ class Input extends GenericInput<string, InputProps> {
 		);
 	};
 
-	private saveInput = (value?: string) => {
+	private saveInput = (value?: string | null) => {
 		if (!this.isChanging) {
 			this.isChanging = true;
 			this.saveTimeout = undefined;
-			if (!value) value = this.waitingValue;
-
-			if (value !== undefined) {
-				if (this.props.onChange) this.props.onChange(value);
-				if (this.props._change) this.props._change({ name: this.props.name, value });
-			}
+			if (value === null) value = this.waitingValue;
+			if (this.props.onChange) this.props.onChange(value);
+			if (this.props._change) this.props._change({ name: this.props.name, value });
 		} else {
 			if (!this.saveTimeout) {
 				this.saveTimeout = setTimeout(() => {
 					this.isChanging = false;
-					this.saveInput();
+					this.saveInput(null);
 				}, this.props.saveDelay ?? 200) as any;
 			}
 			this.waitingValue = value;
@@ -145,8 +142,12 @@ class Input extends GenericInput<string, InputProps> {
 	};
 
 	componentDidMount() {
-		this.setState({ value: this.formatValue(this.props.value) });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.formatValue(this.props.defaultValue ?? this.props.value) });
+	};
 
 	componentDidUpdate(_lastProps: InputProps) {
 		const t = JSON.stringify;

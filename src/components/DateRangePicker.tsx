@@ -85,11 +85,13 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 	};
 
 	componentDidMount() {
-		this.setState({
-			value: this.props.value ? this.props.value : DEFAULT_VALUE
-		});
+		this.loadDefaultValue();
 		this.setDateInternalization();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value ?? DEFAULT_VALUE });
+	};
 
 	setDateInternalization = () => {
 		this.locale = this.props.langKey ?? "en-gb";

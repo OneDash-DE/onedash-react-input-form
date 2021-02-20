@@ -68,9 +68,13 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 	};
 
 	componentDidMount() {
-		this.setState({ value: this.props.value ? this.props.value : null });
+		this.loadDefaultValue();
 		this.setDateInternalization();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value ?? null });
+	};
 
 	setDateInternalization = () => {
 		this.locale = this.props.langKey ?? "en-gb";

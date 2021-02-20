@@ -94,7 +94,7 @@ class Form extends React.Component<FormProps> {
 						},
 						className,
 						key: i,
-						_change: this.onChange,
+						_change: child.props.disableFormTrigger ? undefined : this.onChange,
 						saveDelay: this.props.inputSaveDelay ?? undefined,
 						onError: child.props.onError ?? this.props.onError,
 						errorIcon: child.props.errorIcon ?? this.props.errorIcon
@@ -103,7 +103,7 @@ class Form extends React.Component<FormProps> {
 				);
 				elements.push(newEl);
 			} else {
-				if (childElements.length > 0) {
+				if (child.type !== Form && childElements.length > 0) {
 					const newEl = React.cloneElement(child, { key: i }, childElements);
 					elements.push(newEl);
 				} else {
