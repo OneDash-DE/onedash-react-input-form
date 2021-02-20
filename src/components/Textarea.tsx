@@ -85,12 +85,9 @@ class Textarea extends GenericInput<string, TextareaProps> {
 
 	componentDidUpdate(_lastProps: TextareaProps) {
 		const t = JSON.stringify;
-		if (
-			(t(this.formatValue(this.props.value)) !== t(this.state.value) && this.resetted === true) ||
-			_lastProps.value !== this.props.value
-		) {
+		if ((t(this.props.value) !== t(this.state.value) && this.resetted === true) || _lastProps.value !== this.props.value) {
 			this.setState({
-				value: this.formatValue(this.props.value),
+				value: this.props.value,
 				valid: true
 			});
 		}
