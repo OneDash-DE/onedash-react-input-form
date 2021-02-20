@@ -71,8 +71,12 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 	}
 
 	componentDidMount() {
-		this.setState({ value: this.props.value });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue ?? this.props.value });
+	};
 
 	componentDidUpdate(lastProps: SingleFileUploaderProps) {
 		const value = this.props.value ? this.props.value : null;

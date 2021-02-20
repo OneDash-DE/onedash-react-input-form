@@ -35,8 +35,12 @@ export default class RangeSlider extends GenericInput<SliderStateType, RangeSlid
 	}
 
 	componentDidMount() {
-		this.setState({ value: this.props.defaultValue });
+		this.loadDefaultValue();
 	}
+
+	public loadDefaultValue = () => {
+		this.setState({ value: this.props.defaultValue });
+	};
 
 	componentDidUpdate(lastProps: RangeSliderProps) {
 		const value = this.props.value ? this.props.value : null;

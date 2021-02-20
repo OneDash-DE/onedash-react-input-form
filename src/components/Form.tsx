@@ -151,6 +151,12 @@ class Form extends React.Component<FormProps> {
 		return Promise.all(p);
 	};
 
+	public loadDefaultValues = () => {
+		this.references.forEach((entry) => {
+			if (entry.ref) entry.ref.loadDefaultValue();
+		});
+	};
+
 	/**
 	 * Sets the valid property on all references to valid
 	 */
