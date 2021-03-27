@@ -18,7 +18,6 @@
 		"lint": "npx eslint \"./src/**/*.{js,ts,tsx,mdx}\" --quiet",
 		"format": "npx prettier --write src/**/*.{js,ts,tsx}",
 		"release": "npx semantic-release",
-		"preinstall": "node -e \"!process.env.npm_config_user_agent.startsWith('npm/') && !console.log('Use npm to install dependencies in this repository\\n') && process.exit(1)\"",
 		"install-all": "npm i && cd example && npm i",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook -o example"
