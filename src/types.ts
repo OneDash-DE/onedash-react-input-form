@@ -1,108 +1,5 @@
 import GenericInput from "./components/GenericInput";
-
-export enum ErrorCodes {
-	Default,
-	IsEmpty,
-	IsTooShort,
-	IsTooLong,
-	EmailWrong,
-	TelWrong,
-	NullNotAllowed,
-	NegativeNotAllowed,
-	PleaseChoose,
-	ImageRequired
-}
-export type ErrorMessages = { [key in ErrorCodes]: string };
-
-export interface GenericInputProps<ValueType> {
-	/**
-	 * Name of the component.
-	 */
-	name: string;
-
-	/**
-	 * Optional label of the input
-	 */
-	label?: string;
-
-	/**
-	 * Optional placeholder
-	 */
-	placeholder?: string;
-
-	/**
-	 * Classname which should be assigned to component
-	 */
-	className?: string | string[];
-
-	/**
-	 * Disabled flag
-	 */
-	disabled?: boolean;
-
-	/**
-	 * Value of the component
-	 */
-	value?: ValueType | null;
-
-	/**
-	 * Default value of the input
-	 */
-	defaultValue?: ValueType | null;
-
-	/**
-	 * @private onChange listener for form component
-	 */
-	_change?: (obj: { value?: ValueType | null; name: string }) => any;
-
-	/**
-	 * OnChange listener which returns the value of the component
-	 */
-	onChange?: (value?: ValueType | null) => any;
-
-	/**
-	 * A flag which has to be set to true if you want to trigger onChange when the input get's resetted
-	 */
-	changeTriggerReset?: boolean;
-
-	/**
-	 * OnBlur Event
-	 */
-	onBlur?: (value?: ValueType | null) => any;
-
-	/**
-	 * OnFocus Event
-	 */
-	onFocus?: () => any;
-
-	/**
-	 * OnValidate additional validation step for this component
-	 */
-	onValidate?: (value?: ValueType | null) => boolean | { valid: boolean; errorMessage?: string };
-
-	/**
-	 * A save delay in ms. If you don't provide a delay, 200ms will be used.
-	 */
-	saveDelay?: number;
-
-	/**
-	 * React styles for this component
-	 */
-	style?: React.CSSProperties;
-
-	icon?: React.ReactNode;
-	errorIcon?: React.ReactNode;
-
-	onError?: (errorCode: ErrorCodes, component: GenericInput<any, any>, value?: ValueType) => string;
-
-	disableFormTrigger?: boolean;
-}
-
-export interface GenericInputState {
-	value?: any;
-	valid: boolean;
-	focus: boolean;
-}
+import { ErrorCodes } from "./localeTypes";
 
 export interface ValueLabelPair {
 	/**
@@ -142,6 +39,7 @@ export interface ButtonProps {
 	style?: React.CSSProperties;
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export type timestamp = number;
 
 export type AutoCompleteTypes =

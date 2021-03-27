@@ -1,9 +1,8 @@
-name: Deploy Server
+name: Release new version
 on:
-    push:
-        branches:
-            - master
-        tags-ignore:
+    schedule:
+        - cron: "0 0 * * 6"
+    workflow_dispatch:
 
 jobs:
     create-release:
@@ -15,6 +14,12 @@ jobs:
             - uses: technote-space/auto-cancel-redundant-job@v1
             - name: 🏗 Install dependencies
               run: npm i
+
+            - name: 📝 Format coding
+              run: npm run format
+
+            - name: "🚧 Check linting"
+              run: npm run lint
 
             - name: "🚦 Build package"
               run: npm run build

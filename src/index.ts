@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import Button from "./components/Button";
 import NativeSelect from "./components/NativeSelect";
 import CustomSelect from "./components/CustomSelect";
@@ -10,11 +11,10 @@ import Textarea from "./components/Textarea";
 import Toggle from "./components/Toggle";
 import RangeSlider from "./components/RangeSlider";
 import VerificationCode from "./components/VerificationCode";
-
-import { ErrorMessages, ValueLabelPair } from "./types";
+import { ValueLabelPair } from "./types";
 import { DE, EN } from "./locales";
-import dayjs from "dayjs";
 import { setLocaleMessages } from "./ErrorMessages";
+import { ErrorMessages } from "./localeTypes";
 import { get, set } from "./Utils";
 import SingleFileUploader from "./components/SingleFileUploader";
 
@@ -53,6 +53,7 @@ declare module "dayjs" {
 const timestampExtension = (_option: any, dayjsClass: any) => {
 	// extend dayjs()
 	// e.g. add dayjs().isSameOrBefore()
+	// eslint-disable-next-line func-names
 	dayjsClass.prototype.timestamp = function () {
 		return this.toDate().getTime();
 	};

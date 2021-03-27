@@ -1,4 +1,4 @@
-import { ErrorCodes, ErrorMessages } from "./types";
+import { ErrorCodes, ErrorMessages } from "./localeTypes";
 
 export const DE: ErrorMessages = {
 	[ErrorCodes.Default]: "Der eingegebene Wert ist fehlerhaft",

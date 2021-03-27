@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import { GenericInputProps, ErrorCodes } from "../types";
-import GenericInput from "./GenericInput";
 import Dropzone from "react-dropzone";
+import { ErrorCodes } from "../localeTypes";
+import GenericInput, { GenericInputProps } from "./GenericInput";
 
 interface SignedRequest {
 	signedRequest: string;
@@ -156,6 +157,7 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 				} else if (err.message) {
 					this.setState({ errorMessage: err.message });
 				} else {
+					// eslint-disable-next-line no-console
 					console.error("Error cannot be displayed", err);
 				}
 			});

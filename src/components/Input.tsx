@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from "react";
-import GenericInput from "./GenericInput";
-import { AutoCompleteTypes, ErrorCodes, GenericInputProps } from "../types";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+import { AutoCompleteTypes } from "../types";
+import { ErrorCodes } from "../localeTypes";
 
 interface InputSettings {
 	requiredNotVisible?: boolean;
@@ -36,7 +38,7 @@ class Input extends GenericInput<string, InputProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 
 		if (this.props.type === "number") {
 			const num = Number(this.state.value);
@@ -97,17 +99,16 @@ class Input extends GenericInput<string, InputProps> {
 	formatValue = (value?: any) => {
 		if (value) {
 			return value;
-		} else {
-			if (this.props.type === "number") {
-				return 0;
-			}
-			return undefined;
 		}
+		if (this.props.type === "number") {
+			return 0;
+		}
+		return undefined;
 	};
 
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		this.resetted = false;
-		const value: string = String(e.target.value);
+		const value = String(e.target.value);
 
 		if (this.props.pattern) {
 			// First check pattern

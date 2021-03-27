@@ -1,7 +1,98 @@
+/* eslint-disable react/no-unused-state */
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import errorMessages from "../ErrorMessages";
-import { ErrorCodes, GenericInputProps, GenericInputState } from "../types";
+import { ErrorCodes } from "../localeTypes";
+
+export interface GenericInputProps<ValueType> {
+	/**
+	 * Name of the component.
+	 */
+	name: string;
+
+	/**
+	 * Optional label of the input
+	 */
+	label?: string;
+
+	/**
+	 * Optional placeholder
+	 */
+	placeholder?: string;
+
+	/**
+	 * Classname which should be assigned to component
+	 */
+	className?: string | string[];
+
+	/**
+	 * Disabled flag
+	 */
+	disabled?: boolean;
+
+	/**
+	 * Value of the component
+	 */
+	value?: ValueType | null;
+
+	/**
+	 * Default value of the input
+	 */
+	defaultValue?: ValueType | null;
+
+	/**
+	 * @private onChange listener for form component
+	 */
+	_change?: (obj: { value?: ValueType | null; name: string }) => any;
+
+	/**
+	 * OnChange listener which returns the value of the component
+	 */
+	onChange?: (value?: ValueType | null) => any;
+
+	/**
+	 * A flag which has to be set to true if you want to trigger onChange when the input get's resetted
+	 */
+	changeTriggerReset?: boolean;
+
+	/**
+	 * OnBlur Event
+	 */
+	onBlur?: (value?: ValueType | null) => any;
+
+	/**
+	 * OnFocus Event
+	 */
+	onFocus?: () => any;
+
+	/**
+	 * OnValidate additional validation step for this component
+	 */
+	onValidate?: (value?: ValueType | null) => boolean | { valid: boolean; errorMessage?: string };
+
+	/**
+	 * A save delay in ms. If you don't provide a delay, 200ms will be used.
+	 */
+	saveDelay?: number;
+
+	/**
+	 * React styles for this component
+	 */
+	style?: React.CSSProperties;
+
+	icon?: React.ReactNode;
+	errorIcon?: React.ReactNode;
+
+	onError?: (errorCode: ErrorCodes, component: GenericInput<any, any>, value?: ValueType) => string;
+
+	disableFormTrigger?: boolean;
+}
+
+export interface GenericInputState {
+	value?: any;
+	valid: boolean;
+	focus: boolean;
+}
 
 interface GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
 	formatValue(value: any): any;
@@ -81,13 +172,8 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 	public getValue = (validate?: boolean) => {
 		if ((validate && this.validate()) || !validate) {
 			return { name: this.props.name, value: this.state.value };
-		} else {
-			return undefined;
 		}
-	};
-
-	public abstract loadDefaultValue = (): void => {
-		throw new Error("Valdiate is not implemented yet");
+		return undefined;
 	};
 
 	protected onFocus = () => {
@@ -135,10 +221,13 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 			classList += " with-icon";
 		}
 		if (this.props.className) {
-			classList += " " + this.props.className;
+			classList += ` ${this.props.className}`;
 		}
 
 		return classList;
+	};
+	public abstract loadDefaultValue = (): void => {
+		throw new Error("Valdiate is not implemented yet");
 	};
 
 	protected abstract _validate = (): { valid: boolean; errorCode?: ErrorCodes } => {

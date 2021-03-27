@@ -7,7 +7,7 @@ export default class Button extends React.Component<ButtonProps, any> {
 	private buildClassName = () => {
 		let className = "onedash-button-v2";
 		if (this.props.className) {
-			className += " " + this.props.className;
+			className += ` ${this.props.className}`;
 		}
 		if (this.props.disabled) {
 			className += " disabled";

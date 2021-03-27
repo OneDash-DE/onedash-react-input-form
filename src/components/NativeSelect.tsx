@@ -1,7 +1,8 @@
 import React from "react";
-import GenericInput from "./GenericInput";
-import { AutoCompleteTypes, ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+import { AutoCompleteTypes, ValueLabelPair } from "../types";
 import errorMessages from "../ErrorMessages";
+import { ErrorCodes } from "../localeTypes";
 
 interface NativeSelectSettings {
 	requiredNotVisible?: boolean;
@@ -33,7 +34,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 		if (this.props.required && (!value || value === "invalid-input")) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
@@ -128,7 +129,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 							{this.props.placeholder ? this.props.placeholder : errorMessages()[ErrorCodes.PleaseChoose]}
 						</option>
 						{options.map((option, index) => (
-							<option key={index} value={JSON.stringify(option.value)}>
+							<option key={index as any} value={JSON.stringify(option.value)}>
 								{option.label}
 							</option>
 						))}

@@ -1,5 +1,5 @@
-import { ErrorMessages } from ".";
 import { EN } from "./locales";
+import { ErrorMessages } from "./localeTypes";
 
 let ERROR_MESSAGES: ErrorMessages = EN;
 

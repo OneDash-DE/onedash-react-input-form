@@ -1,6 +1,6 @@
 import React from "react";
-import GenericInput from "./GenericInput";
-import { ErrorCodes, GenericInputProps } from "../types";
+import { ErrorCodes } from "../localeTypes";
+import GenericInput, { GenericInputProps } from "./GenericInput";
 
 interface InputSettings {
 	requiredNotVisible?: boolean;
@@ -28,7 +28,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 
 		if (this.props.required === true && (value === undefined || value === null || String(value)?.length === 0)) {
 			valid = false;
@@ -47,7 +47,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		this.resetted = false;
-		const value: string | number = e.target.value;
+		const { value } = e.target;
 		this.setState(
 			{
 				value

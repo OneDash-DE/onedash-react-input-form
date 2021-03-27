@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import Input from "./Input";
 import Select from "./NativeSelect";
@@ -5,7 +6,6 @@ import Button from "./Button";
 import DatePicker from "./DatePicker";
 import DateRangePicker from "./DateRangePicker";
 import Toggle from "./Toggle";
-import { ErrorCodes } from "../types";
 import GenericInput from "./GenericInput";
 import Textarea from "./Textarea";
 import Numeric from "./Numeric";
@@ -14,6 +14,7 @@ import { set } from "../Utils";
 import VerificationCode from "./VerificationCode";
 import RangeSlider from "./RangeSlider";
 import SingleFileUploader from "./SingleFileUploader";
+import { ErrorCodes } from "../localeTypes";
 
 export interface FormProps {
 	onSubmit?: (values: any, control: Form) => void;
@@ -54,6 +55,11 @@ class Form extends React.Component<FormProps> {
 		this.references = [];
 		this.onSubmit.bind(this);
 	}
+	componentDidMount() {
+		if (this.props.validateOnChange || this.props.validateOnSubmit) {
+			this.validateSubmitBtn();
+		}
+	}
 
 	cloneChildren = (children: any, elements: any[]) => {
 		React.Children.forEach(children, (child, i) => {
@@ -93,7 +99,7 @@ class Form extends React.Component<FormProps> {
 							});
 						},
 						className,
-						key: i,
+						key: i as any,
 						_change: child.props.disableFormTrigger ? undefined : this.onChange,
 						saveDelay: this.props.inputSaveDelay ?? undefined,
 						onError: child.props.onError ?? this.props.onError,
@@ -102,13 +108,11 @@ class Form extends React.Component<FormProps> {
 					childElements
 				);
 				elements.push(newEl);
+			} else if (child.type !== Form && childElements.length > 0) {
+				const newEl = React.cloneElement(child, { key: i as any }, childElements);
+				elements.push(newEl);
 			} else {
-				if (child.type !== Form && childElements.length > 0) {
-					const newEl = React.cloneElement(child, { key: i }, childElements);
-					elements.push(newEl);
-				} else {
-					elements.push(child);
-				}
+				elements.push(child);
 			}
 		});
 
@@ -179,12 +183,6 @@ class Form extends React.Component<FormProps> {
 		});
 	};
 
-	componentDidMount() {
-		if (this.props.validateOnChange || this.props.validateOnSubmit) {
-			this.validateSubmitBtn();
-		}
-	}
-
 	onChange = () => {
 		const values = this.mapData();
 		this.validateSubmitBtn();
@@ -226,10 +224,9 @@ class Form extends React.Component<FormProps> {
 				if (this.props.onSubmit) this.props.onSubmit(values, this);
 				if (e) e.preventDefault();
 				return;
-			} else {
-				if (e) e.preventDefault();
-				return;
 			}
+			if (e) e.preventDefault();
+			return;
 		}
 		if (this.props.onSubmit) this.props.onSubmit(values, this);
 
@@ -239,7 +236,7 @@ class Form extends React.Component<FormProps> {
 	buildClassName = () => {
 		let classes = "onedash-form";
 		if (this.props.className) {
-			classes += " " + this.props.className;
+			classes += ` ${this.props.className}`;
 		}
 		return classes;
 	};

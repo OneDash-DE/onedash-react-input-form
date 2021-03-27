@@ -1,6 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ChangeEvent } from "react";
-import { ErrorCodes, GenericInputProps } from "../types";
-import GenericInput from "./GenericInput";
+import { ErrorCodes } from "../localeTypes";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+
 export interface BooleanSettings {
 	requiredNotVisible?: boolean;
 }
@@ -14,7 +19,7 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 		if (this.props.required && !value) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;

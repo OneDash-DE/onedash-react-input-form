@@ -1,15 +1,16 @@
 import React from "react";
-import GenericInput from "./GenericInput";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import SingleDatePicker from "react-dates/lib/components/SingleDatePicker";
-import { ErrorCodes, GenericInputProps } from "../types";
 import moment from "moment";
 import "moment/locale/de";
 import "moment/locale/en-gb";
 import dayjs from "dayjs";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import { ErrorCodes } from "../localeTypes";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
@@ -40,7 +41,7 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 		if (this.props.required && !value) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
@@ -57,9 +58,8 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 		if (this.props.minDate) {
 			if (this.props.maxDate) {
 				return !(date.isSameOrAfter(this.props.minDate) && date.isSameOrBefore(this.props.maxDate));
-			} else {
-				return !date.isSameOrAfter(this.props.minDate);
 			}
+			return !date.isSameOrAfter(this.props.minDate);
 		}
 		if (this.props.maxDate) {
 			return !date.isSameOrBefore(this.props.maxDate);
@@ -151,6 +151,7 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 						focused={this.state.focus}
 						disabled={this.props.disabled}
 						placeholder={this.props.placeholder ?? "Choose a date"}
+						// eslint-disable-next-line no-nested-ternary
 						numberOfMonths={this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1}
 						isOutsideRange={this.checkRange}
 						isDayBlocked={this.props.isDayBlocked}

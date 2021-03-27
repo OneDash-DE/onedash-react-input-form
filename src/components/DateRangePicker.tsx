@@ -1,9 +1,7 @@
 import React from "react";
-import GenericInput from "./GenericInput";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import DRangePicker from "react-dates/lib/components/DateRangePicker";
-import { ErrorCodes, GenericInputProps, timestamp } from "../types";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import "moment/locale/de";
@@ -12,6 +10,10 @@ import "moment/locale/en-gb";
 import dayjs from "dayjs";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import { timestamp } from "../types";
+import { ErrorCodes } from "../localeTypes";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
@@ -57,7 +59,7 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 		if (this.props.required && (!value.startDate || !value.endDate)) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
@@ -74,9 +76,8 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 		if (this.props.minDate) {
 			if (this.props.maxDate) {
 				return !(date.isSameOrAfter(this.props.minDate) && date.isSameOrBefore(this.props.maxDate));
-			} else {
-				return !date.isSameOrAfter(this.props.minDate);
 			}
+			return !date.isSameOrAfter(this.props.minDate);
 		}
 		if (this.props.maxDate) {
 			return !date.isSameOrBefore(this.props.maxDate);
@@ -169,6 +170,7 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 					disabled={this.props.disabled}
 					startDatePlaceholderText={this.props.startPlaceholder ?? "Choose a start date"}
 					endDatePlaceholderText={this.props.endPlaceholder ?? "Choose a end date"}
+					// eslint-disable-next-line no-nested-ternary
 					numberOfMonths={this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1}
 					isOutsideRange={this.checkRange}
 					isDayBlocked={this.props.isDayBlocked}

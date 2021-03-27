@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
-import GenericInput from "./GenericInput";
-import { AutoCompleteTypes, ErrorCodes, GenericInputProps } from "../types";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+import { AutoCompleteTypes } from "../types";
+import { ErrorCodes } from "../localeTypes";
 
 interface InputSettings {
 	requiredNotVisible?: boolean;
@@ -36,7 +39,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 	protected _validate = () => {
 		let valid = true;
 		let errorCode: ErrorCodes = ErrorCodes.Default;
-		const value = this.state.value;
+		const { value } = this.state;
 
 		if (this.props.required === true && (value === undefined || value === null || String(value)?.length === 0)) {
 			valid = false;
@@ -49,16 +52,15 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 	formatValue = (value?: any) => {
 		if (value) {
 			return value;
-		} else {
-			return [];
 		}
+		return [];
 	};
 
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		if (this.state.selectedIndex >= this.props.codeLength) return;
 		this.resetted = false;
-		const value = this.state.value;
-		let selectedIndex = this.state.selectedIndex;
+		const { value } = this.state;
+		let { selectedIndex } = this.state;
 		let inputValue = String(e.target.value);
 		if (value[selectedIndex]?.length > 0 && inputValue.length > 1) {
 			inputValue = inputValue.slice(1);
@@ -127,6 +129,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 			(t(this.formatValue(this.props.value)) !== t(this.state.value) && this.resetted === true) ||
 			_lastProps.value !== this.props.value
 		) {
+			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({
 				value: this.formatValue(this.props.value),
 				valid: true
@@ -186,6 +189,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 						autoComplete={autoComplete}
 						pattern="^$|^[0-9]+$"
 						type="tel"
+						// eslint-disable-next-line jsx-a11y/no-autofocus
 						autoFocus={autoFocus}
 						style={{
 							...this.props.style,
@@ -199,7 +203,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 
 							return (
 								<div
-									key={index}
+									key={index as any}
 									className="display"
 									onClick={() => {
 										if (disabled) return;

@@ -1,7 +1,7 @@
 import React from "react";
 import Cleave from "cleave.js/react";
-import { GenericInputProps, ErrorCodes } from "../types";
-import GenericInput from "./GenericInput";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+import { ErrorCodes } from "../localeTypes";
 
 interface NumericSettings {
 	requiredNotVisible?: boolean;
@@ -55,7 +55,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 	};
 
 	formatValue = (value?: number | null) => {
-		if (value === null || value === undefined) return;
+		if (value === null || value === undefined) return undefined;
 
 		let val = String(value);
 		if (this.props.numeralDecimalMark) {
@@ -68,14 +68,13 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 	public getValue = (validate?: boolean) => {
 		if ((validate && this.validate()) || !validate) {
 			return { name: this.props.name, value: this.getNumber(this.state.value) };
-		} else {
-			return undefined;
 		}
+		return undefined;
 	};
 
 	private inputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		this.resetted = false;
-		const value = e.target.value;
+		const { value } = e.target;
 
 		this.setState(
 			{
@@ -86,7 +85,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 	};
 
 	private getNumber = (val?: string | null) => {
-		if (val === undefined || val === null) return;
+		if (val === undefined || val === null) return undefined;
 
 		// Remove delimiter(s)
 		if (this.props.delimiter) {

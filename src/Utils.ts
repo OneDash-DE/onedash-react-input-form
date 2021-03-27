@@ -4,7 +4,7 @@ export const get = (path: string, obj: any) => {
 	const current = obj;
 	subPaths.forEach((item, i) => {
 		if (i === subPaths.length - 1) {
-			return (value = current[item]);
+			value = current[item];
 		}
 	});
 	return value;

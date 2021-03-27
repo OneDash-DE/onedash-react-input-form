@@ -1,9 +1,11 @@
 import React from "react";
-import GenericInput from "./GenericInput";
-import { ErrorCodes, GenericInputProps, ValueLabelPair } from "../types";
 import makeAnimated from "react-select/animated";
 import ReactSelect from "react-select";
+import GenericInput, { GenericInputProps } from "./GenericInput";
+import { ValueLabelPair } from "../types";
 import errorMessages from "../ErrorMessages";
+import { ErrorCodes } from "../localeTypes";
+
 const animatedComponents = makeAnimated();
 
 interface CustomSelectSettings {
@@ -122,7 +124,7 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 						onBlur={this.onBlur}
 						value={value}
 						onFocus={this.onFocus}
-						onChange={(value) => this.inputChange(value)}
+						onChange={(v) => this.inputChange(v)}
 						isMulti={isMulti}
 						isLoading={loading}
 						isSearchable={searchable}
