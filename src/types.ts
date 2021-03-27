@@ -1,6 +1,3 @@
-import GenericInput from "./components/GenericInput";
-import { ErrorCodes } from "./localeTypes";
-
 export interface ValueLabelPair {
 	/**
 	 * Option value
