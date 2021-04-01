@@ -180,6 +180,7 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 					endDateId={endDateId ?? uuidv4()}
 					style={this.props.style}
 					withPortal={this.props.withPortal}
+					tabIndex={this.props.tabIndex}
 				/>
 			</div>
 		);

@@ -129,6 +129,7 @@ class Textarea extends GenericInput<string, TextareaProps> {
 						autoComplete={this.props.autoComplete}
 						rows={this.props.rows}
 						maxLength={this.props.maxLength}
+						tabIndex={this.props.tabIndex}
 					/>
 				</div>
 			</div>

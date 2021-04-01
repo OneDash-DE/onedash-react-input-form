@@ -218,6 +218,7 @@ class Input extends GenericInput<string, InputProps> {
 						maxLength={maxLength}
 						style={this.props.style}
 						autoFocus={autoFocus}
+						tabIndex={this.props.tabIndex}
 					/>
 				</div>
 			</div>

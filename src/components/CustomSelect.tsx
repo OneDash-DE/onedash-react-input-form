@@ -135,6 +135,7 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 						className="component"
 						classNamePrefix="onedash-custom-select"
 						loadingMessage={() => "..."}
+						tabIndex={this.props.tabIndex ? String(this.props.tabIndex) : undefined}
 					/>
 				</div>
 			</div>
