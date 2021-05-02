@@ -1,0 +1,43 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.2.9
+  - dependency-name: "@storybook/addon-links"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.1.21
+  - dependency-name: eslint-config-prettier
+    versions:
+    - 8.0.0
+    - 8.1.0
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.14.1
+    - 4.14.2
+  - dependency-name: "@storybook/addon-essentials"
+    versions:
+    - 6.1.15
+    - 6.1.17
+  - dependency-name: "@storybook/react"
+    versions:
+    - 6.1.15
+    - 6.1.17
+  - dependency-name: semantic-release
+    versions:
+    - 17.3.7
+  - dependency-name: "@types/react-select"
+    versions:
+    - 4.0.11
+  commit-message:
+    prefix: chore
