@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from "react";
 import GenericInput, { GenericInputProps } from "./GenericInput";
 import { AutoCompleteTypes } from "../types";
@@ -189,7 +190,7 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 						autoComplete={autoComplete}
 						pattern="^$|^[0-9]+$"
 						type="tel"
-						// eslint-disable-next-line jsx-a11y/no-autofocus
+						tabIndex={this.props.tabIndex}
 						autoFocus={autoFocus}
 						style={{
 							...this.props.style,

@@ -124,6 +124,7 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 						onFocus={this.onFocus}
 						autoComplete={autoComplete}
 						onChange={(e) => this.inputChange(e.target.value)}
+						tabIndex={this.props.tabIndex}
 						className="component">
 						<option value={'"invalid-input"'}>
 							{this.props.placeholder ? this.props.placeholder : errorMessages()[ErrorCodes.PleaseChoose]}

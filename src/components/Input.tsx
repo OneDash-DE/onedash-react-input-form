@@ -223,6 +223,7 @@ class Input extends GenericInput<string, InputProps> {
 						min={settings?.min}
 						max={settings?.max}
 						step={settings?.step}
+						tabIndex={this.props.tabIndex}
 					/>
 				</div>
 			</div>

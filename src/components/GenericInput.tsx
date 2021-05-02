@@ -86,6 +86,8 @@ export interface GenericInputProps<ValueType> {
 	onError?: (errorCode: ErrorCodes, component: GenericInput<any, any>, value?: ValueType) => string;
 
 	disableFormTrigger?: boolean;
+
+	tabIndex?: number;
 }
 
 export interface GenericInputState {

@@ -96,7 +96,7 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 						type="checkbox"
 						id={this.id}
 					/>
-					<div className="check-bg" tabIndex={0} onKeyDown={this.onKeyDown} />
+					<div className="check-bg" tabIndex={this.props.tabIndex} onKeyDown={this.onKeyDown} />
 					<div className="checkmark">
 						<svg viewBox="0 0 100 100">
 							<path

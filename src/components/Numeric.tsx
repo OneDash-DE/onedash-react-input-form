@@ -195,6 +195,7 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 						onChange={this.inputChange}
 						value={this.state.value ? this.state.value : ""}
 						onBlur={this.onBlur}
+						tabIndex={this.props.tabIndex}
 						options={{
 							numeral: true,
 							numericOnly: true,
