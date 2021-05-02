@@ -13,6 +13,9 @@ interface InputSettings {
 	textAreaRows?: number;
 	showErrorMessage?: boolean;
 	placeholderErrorMessage?: boolean;
+	min?: string;
+	max?: string;
+	step?: number;
 }
 
 export interface InputProps extends GenericInputProps<string> {
@@ -40,17 +43,16 @@ class Input extends GenericInput<string, InputProps> {
 		let errorCode: ErrorCodes = ErrorCodes.Default;
 		const { value } = this.state;
 
-		if (this.props.type === "number") {
-			const num = Number(this.state.value);
-			if (this.props.settings?.allowNumberNull === false && num === 0) {
-				valid = false;
-				errorCode = ErrorCodes.NullNotAllowed;
-			}
-			if (this.props.settings?.allowNumberNegative === false && num < 0) {
-				valid = false;
-				errorCode = ErrorCodes.NegativeNotAllowed;
-			}
+		const num = this.props.type === "number" ? Number(this.state.value) : this.state.value;
+		if (this.props.settings?.allowNumberNull === false && num === 0) {
+			valid = false;
+			errorCode = ErrorCodes.NullNotAllowed;
 		}
+		if (this.props.settings?.allowNumberNegative === false && num < 0) {
+			valid = false;
+			errorCode = ErrorCodes.NegativeNotAllowed;
+		}
+
 		if (this.props.required === true && (value === undefined || value === null || String(value)?.length === 0)) {
 			valid = false;
 			errorCode = ErrorCodes.IsEmpty;
@@ -218,6 +220,9 @@ class Input extends GenericInput<string, InputProps> {
 						maxLength={maxLength}
 						style={this.props.style}
 						autoFocus={autoFocus}
+						min={settings?.min}
+						max={settings?.max}
+						step={settings?.step}
 					/>
 				</div>
 			</div>
