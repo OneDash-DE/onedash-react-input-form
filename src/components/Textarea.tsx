@@ -57,22 +57,15 @@ class Textarea extends GenericInput<string, TextareaProps> {
 	};
 
 	private saveInput = (value?: string | null) => {
-		if (!this.isChanging) {
-			this.isChanging = true;
+		if (this.saveTimeout !== undefined) {
+			clearTimeout(this.saveTimeout);
 			this.saveTimeout = undefined;
-			if (value === null) value = this.waitingValue;
-
+		}
+		this.saveTimeout = setTimeout(() => {
 			if (this.props.onChange) this.props.onChange(value);
 			if (this.props._change) this.props._change({ name: this.props.name, value });
-		} else {
-			if (!this.saveTimeout) {
-				this.saveTimeout = setTimeout(() => {
-					this.isChanging = false;
-					this.saveInput(null);
-				}, this.props.saveDelay ?? 200) as any;
-			}
-			this.waitingValue = value;
-		}
+			this.saveTimeout = undefined;
+		}, this.props.saveDelay ?? 400) as any;
 	};
 
 	componentDidMount() {
