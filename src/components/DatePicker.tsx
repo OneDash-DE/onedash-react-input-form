@@ -156,7 +156,6 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 						isOutsideRange={this.checkRange}
 						isDayBlocked={this.props.isDayBlocked}
 						withPortal={this.props.withPortal}
-						tabIndex={this.props.tabIndex}
 						onFocusChange={(e: any) => {
 							if (e.focused === true) {
 								this.onFocus();
