@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import SingleFileUploader from "../SingleFileUploader";
+import Form from "../Form";
 import "./style.sass";
 import "./input.sass";
 
@@ -39,10 +40,14 @@ const getSignedRequest = (file) => {
 							url: "https://onedash-example.com/example-key",
 							key: "example-key"
 						});
-					}, 10000000);
+					}, 1000);
 				});
 			}
 		}}>
-		{(args) => <SingleFileUploader {...args} />}
+		{(args) => (
+			<Form debug onChange={console.log}>
+				<SingleFileUploader required {...args} />
+			</Form>
+		)}
 	</Story>
 </Canvas>

@@ -68,6 +68,7 @@ class Form extends React.Component<FormProps> {
 			if (child.props && child.props.children && typeof child.props.children === "object") {
 				childElements = this.cloneChildren(child.props.children, []);
 			}
+
 			if (
 				child.type === Input ||
 				child.type === Numeric ||
@@ -128,8 +129,12 @@ class Form extends React.Component<FormProps> {
 	};
 
 	public validateInputs = (updateComponent = true) => {
-		if (this.props.debug) console.log("--------------------");
+		if (this.props.debug) {
+			console.log("---------VALIDATE-----------");
+			console.log(this.references);
+		}
 		let valid = true;
+
 		this.references.forEach((entry) => {
 			if (entry.ref) {
 				if (!entry.ref.validate(updateComponent)) {
@@ -138,6 +143,10 @@ class Form extends React.Component<FormProps> {
 				}
 			}
 		});
+
+		if (this.props.debug) {
+			console.log(`VALIDATION: ${valid}`);
+		}
 
 		return valid;
 	};
@@ -184,6 +193,9 @@ class Form extends React.Component<FormProps> {
 	};
 
 	onChange = () => {
+		if (this.props.debug) console.log("---------ON CHANGE-----------");
+		if (this.props.debug) console.log(this.mapData());
+
 		const values = this.mapData();
 		this.validateSubmitBtn();
 		if (this.props.onValidate && this.props.onValidate(values, this) === false) {
