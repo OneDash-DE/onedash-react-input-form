@@ -32,7 +32,7 @@ jobs:
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: gh-pages
-                  FOLDER: example # The folder the action should deploy.
+                  FOLDER: storybook-static
                   CLEAN: true
 
             - name: Semantic Release
