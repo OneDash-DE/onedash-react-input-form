@@ -15,7 +15,7 @@
 		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern",
 		"start": "npm run storybook",
 		"lint": "tsc --noEmit && eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
-		"format": "prettier --write src/**/*.{js,ts,tsx}",
+		"format": "prettier --write \"./src/**/*.{js,ts,tsx}\"",
 		"release": "semantic-release",
 		"install-all": "npm i && cd example && npm i",
 		"storybook": "start-storybook -p 6006",

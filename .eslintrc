@@ -38,7 +38,8 @@
 				"singleQuote": false,
 				"printWidth": 120,
 				"jsxSingleQuote": false,
-				"semi": true
+				"semi": true,
+				"bracketSameLine": true
 			}
 		],
 		"react/no-did-update-set-state": "off",
