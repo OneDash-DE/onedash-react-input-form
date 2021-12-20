@@ -82,7 +82,9 @@ export default class Toggle extends GenericInput<boolean, ToggleProps> {
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				<label className="checker">

@@ -203,16 +203,25 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 								onDrop={this.onDrop}>
 								{({ getRootProps, getInputProps, isDragAccept, isDragReject }) => (
 									<div className="image-upload-area container">
-										<div {...getRootProps({ className: this.getClassName(isDragAccept, isDragReject) })}>
+										<div
+											{...getRootProps({
+												className: this.getClassName(isDragAccept, isDragReject)
+											})}>
 											<input {...getInputProps()} />
 											<div className="upload-icon">
 												{this.props.uploadIcon ?? (
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24">
 														<path d="M10 9h-6l8-9 8 9h-6v11h-4v-11zm11 11v2h-18v-2h-2v4h22v-4h-2z" />
 													</svg>
 												)}
 											</div>
-											{this.props.placeholder && <div className="content-placeholder">{this.props.placeholder}</div>}
+											{this.props.placeholder && (
+												<div className="content-placeholder">{this.props.placeholder}</div>
+											)}
 											{errorMessage && <div className="error-message">{errorMessage}</div>}
 										</div>
 									</div>
@@ -222,7 +231,11 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 							<div className={droppedFile.isImage ? "image" : "file"}>
 								<button className="delete-btn" onClick={this.onDeleteFile}>
 									{this.props.deleteIcon ?? (
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24">
 											<path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z" />
 										</svg>
 									)}
@@ -232,7 +245,11 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 								) : (
 									<>
 										{this.props.fileIcon ?? (
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="24"
+												height="24"
+												viewBox="0 0 24 24">
 												<path d="M14.568.075c2.202 1.174 5.938 4.883 7.432 6.881-1.286-.9-4.044-1.657-6.091-1.179.222-1.468-.185-4.534-1.341-5.702zm-.824 7.925s1.522-8-3.335-8h-8.409v24h20v-13c0-3.419-5.247-3.745-8.256-3z" />
 											</svg>
 										)}
@@ -252,7 +269,11 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 							<div className="image">
 								<button className="delete-btn" onClick={this.onDeleteFile}>
 									{this.props.deleteIcon ?? (
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24">
 											<path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z" />
 										</svg>
 									)}
@@ -263,7 +284,11 @@ export default class SingleFileUploader extends GenericInput<string, SingleFileU
 							<div className="file">
 								<button className="delete-btn" onClick={this.onDeleteFile}>
 									{this.props.deleteIcon ?? (
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24">
 											<path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z" />
 										</svg>
 									)}

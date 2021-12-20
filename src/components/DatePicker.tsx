@@ -132,7 +132,9 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				<div className="input-wrapper">
@@ -143,7 +145,9 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					<SingleDatePicker
 						date={this.state.value === null ? null : moment(this.state.value)}
@@ -152,7 +156,9 @@ export default class DatePicker extends GenericInput<number, DatePickerProps> {
 						disabled={this.props.disabled}
 						placeholder={this.props.placeholder ?? "Choose a date"}
 						// eslint-disable-next-line no-nested-ternary
-						numberOfMonths={this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1}
+						numberOfMonths={
+							this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1
+						}
 						isOutsideRange={this.checkRange}
 						isDayBlocked={this.props.isDayBlocked}
 						withPortal={this.props.withPortal}

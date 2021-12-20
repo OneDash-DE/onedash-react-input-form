@@ -7,7 +7,7 @@
 		"prettier",
 		"plugin:prettier/recommended"
 	],
-	"plugins": ["react", "@typescript-eslint", "jest"],
+	"plugins": ["react", "@typescript-eslint", "jest", "import", "jsx-a11y"],
 	"env": {
 		"browser": true,
 		"es6": true,
@@ -36,7 +36,7 @@
 				"useTabs": true,
 				"tabWidth": 4,
 				"singleQuote": false,
-				"printWidth": 140,
+				"printWidth": 120,
 				"jsxSingleQuote": false,
 				"semi": true
 			}

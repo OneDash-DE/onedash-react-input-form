@@ -78,7 +78,10 @@ class Textarea extends GenericInput<string, TextareaProps> {
 
 	componentDidUpdate(_lastProps: TextareaProps) {
 		const t = JSON.stringify;
-		if ((t(this.props.value) !== t(this.state.value) && this.resetted === true) || _lastProps.value !== this.props.value) {
+		if (
+			(t(this.props.value) !== t(this.state.value) && this.resetted === true) ||
+			_lastProps.value !== this.props.value
+		) {
 			this.setState({
 				value: this.props.value,
 				valid: true
@@ -95,7 +98,9 @@ class Textarea extends GenericInput<string, TextareaProps> {
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				<div className="input-wrapper">
@@ -106,7 +111,9 @@ class Textarea extends GenericInput<string, TextareaProps> {
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					<textarea
 						disabled={this.props.disabled}

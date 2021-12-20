@@ -263,7 +263,9 @@ class Form extends React.Component<FormProps> {
 				<div className="form-buttons">
 					{this.props.resetText && (
 						<Button
-							className={submitClassName ? `form-reset-btn ${this.props.submitClassName}` : "form-reset-btn"}
+							className={
+								submitClassName ? `form-reset-btn ${this.props.submitClassName}` : "form-reset-btn"
+							}
 							onClick={() => this.resetForm()}
 							type="reset">
 							{this.props.resetText}
@@ -271,7 +273,9 @@ class Form extends React.Component<FormProps> {
 					)}
 					{this.props.submitText && (
 						<Button
-							className={submitClassName ? `form-submit-btn ${this.props.submitClassName}` : "form-submit-btn"}
+							className={
+								submitClassName ? `form-submit-btn ${this.props.submitClassName}` : "form-submit-btn"
+							}
 							disabled={(this.props.validateOnSubmit || this.props.validateOnChange) && !this.state.valid}
 							type="submit">
 							{this.props.submitText}

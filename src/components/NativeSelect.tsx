@@ -102,7 +102,9 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				<div className="input-wrapper">
@@ -113,7 +115,9 @@ export default class NativeSelect extends GenericInput<any, NativeSelectProps> {
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					<select
 						placeholder={inputPlaceholder}

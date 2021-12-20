@@ -166,7 +166,9 @@ class VerificationCode extends GenericInput<string[], VerificationCodeProps> {
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					{loadingSpinner && disabled && <div className="spinner">{loadingSpinner}</div>}
 

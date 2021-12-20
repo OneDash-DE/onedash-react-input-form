@@ -96,10 +96,15 @@ export interface GenericInputState {
 	focus: boolean;
 }
 
-interface GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
+interface GenericInput<ValueType, T extends GenericInputProps<ValueType>>
+	extends React.Component<T, any, GenericInputState> {
 	formatValue(value: any): any;
 }
-abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<T, any, GenericInputState> {
+abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> extends React.Component<
+	T,
+	any,
+	GenericInputState
+> {
 	protected id = uuidv4();
 	protected reference: any;
 	protected resetted = false;
@@ -228,13 +233,9 @@ abstract class GenericInput<ValueType, T extends GenericInputProps<ValueType>> e
 
 		return classList;
 	};
-	public abstract loadDefaultValue = (): void => {
-		throw new Error("Valdiate is not implemented yet");
-	};
+	public abstract loadDefaultValue(): void;
 
-	protected abstract _validate = (): { valid: boolean; errorCode?: ErrorCodes } => {
-		throw new Error("Valdiate is not implemented yet");
-	};
+	protected abstract _validate(): { valid: boolean; errorCode?: ErrorCodes };
 }
 
 export default GenericInput;

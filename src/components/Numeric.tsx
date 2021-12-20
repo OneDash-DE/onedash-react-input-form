@@ -175,7 +175,9 @@ export default class Numeric extends GenericInput<number, NumericProps> {
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					<Cleave
 						disabled={disabled}

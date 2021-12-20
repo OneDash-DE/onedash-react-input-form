@@ -104,7 +104,9 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				<div className="input-wrapper">
@@ -115,12 +117,14 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 							{errorMessage}
 						</label>
 					)}
-					{required === true && !settings?.requiredNotVisible && <span className="required placeholder-required">*</span>}
+					{required === true && !settings?.requiredNotVisible && (
+						<span className="required placeholder-required">*</span>
+					)}
 
 					<ReactSelect
 						options={options}
 						placeholder={inputPlaceholder}
-						disabled={disabled}
+						isDisabled={disabled}
 						onBlur={this.onBlur}
 						value={value}
 						onFocus={this.onFocus}
@@ -129,13 +133,12 @@ export default class CustomSelect extends GenericInput<any | any[], CustomSelect
 						isLoading={loading}
 						isSearchable={searchable}
 						components={animatedComponents}
-						style={this.props.style}
 						menuPlacement="auto"
 						isClearable={!required}
 						className="component"
 						classNamePrefix="onedash-custom-select"
 						loadingMessage={() => "..."}
-						tabIndex={this.props.tabIndex ? String(this.props.tabIndex) : undefined}
+						tabIndex={this.props.tabIndex ? Number(this.props.tabIndex) : undefined}
 					/>
 				</div>
 			</div>

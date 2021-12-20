@@ -156,7 +156,9 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 				{this.props.label && (
 					<label className="onedash-label" htmlFor={this.id}>
 						{this.props.label}
-						{this.props.required === true && !this.props.settings?.requiredNotVisible && <span className="required">*</span>}
+						{this.props.required === true && !this.props.settings?.requiredNotVisible && (
+							<span className="required">*</span>
+						)}
 					</label>
 				)}
 				{this.props.placeholder && this.props.required === true && !this.props.settings?.requiredNotVisible && (
@@ -171,7 +173,9 @@ export default class DateRangePicker extends GenericInput<DateRangeValueType, Da
 					startDatePlaceholderText={this.props.startPlaceholder ?? "Choose a start date"}
 					endDatePlaceholderText={this.props.endPlaceholder ?? "Choose a end date"}
 					// eslint-disable-next-line no-nested-ternary
-					numberOfMonths={this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1}
+					numberOfMonths={
+						this.props.numberOfMonths ? this.props.numberOfMonths : window.innerWidth > 1200 ? 2 : 1
+					}
 					isOutsideRange={this.checkRange}
 					isDayBlocked={this.props.isDayBlocked}
 					onFocusChange={(focusedInput: any) => this.setState({ focusedInput })}
