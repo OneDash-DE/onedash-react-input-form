@@ -5,13 +5,14 @@
 	"author": "ChewbaccaCookie",
 	"license": "MIT",
 	"repository": "OneDash-DE/onedash-react-input-form",
-	"module": "dist/index.modern.mjs.gz",
+	"main": "dist/onedash-react-input-form.js.gz",
+	"module": "dist/onedash-react-input-form.modern.mjs.gz",
 	"source": "src/index.ts",
 	"engines": {
-		"node": ">=10"
+		"node": ">=16"
 	},
 	"scripts": {
-		"build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --no-sourcemap --css-modules false --format modern",
+		"build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --no-sourcemap --css-modules false --format modern,cjs",
 		"start": "npm run storybook",
 		"lint": "tsc --noEmit && eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
 		"format": "prettier --write \"./src/**/*.{js,ts,tsx}\"",
