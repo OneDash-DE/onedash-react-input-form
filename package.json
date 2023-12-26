@@ -8,7 +8,7 @@
 	"main": "dist/onedash-react-input-form.js",
 	"module": "dist/onedash-react-input-form.modern.mjs",
 	"source": "src/index.ts",
-	"types": "dist/types.d.ts",
+	"types": "dist/index.d.ts",
 	"engines": {
 		"node": ">=16"
 	},
