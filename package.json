@@ -5,8 +5,8 @@
 	"author": "ChewbaccaCookie",
 	"license": "MIT",
 	"repository": "OneDash-DE/onedash-react-input-form",
-	"main": "dist/onedash-react-input-form.js.gz",
-	"module": "dist/onedash-react-input-form.modern.mjs.gz",
+	"main": "dist/onedash-react-input-form.js",
+	"module": "dist/onedash-react-input-form.modern.mjs",
 	"source": "src/index.ts",
 	"engines": {
 		"node": ">=16"
