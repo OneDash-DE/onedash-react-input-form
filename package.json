@@ -12,7 +12,7 @@
 		"node": ">=10"
 	},
 	"scripts": {
-		"build": "microbundle --no-sourcemap --css-modules false --jsx React.createElement --format modern",
+		"build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --no-sourcemap --css-modules false --format modern",
 		"start": "npm run storybook",
 		"lint": "tsc --noEmit && eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
 		"format": "prettier --write \"./src/**/*.{js,ts,tsx}\"",
@@ -62,7 +62,7 @@
 		"eslint-plugin-react": "7.30.1",
 		"eslint-plugin-standard": "5.0.0",
 		"husky": "7.0.4",
-		"microbundle": "0.15.0",
+		"microbundle": "0.15.1",
 		"npm-run-all": "4.1.5",
 		"prettier": "2.7.1",
 		"react": "17.0.2",
