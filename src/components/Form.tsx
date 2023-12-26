@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from "react";
+import React, { ReactNode } from "react";
 import Input from "./Input";
 import Select from "./NativeSelect";
 import Button from "./Button";
@@ -31,6 +31,8 @@ export interface FormProps {
 	validateOnSubmit?: boolean;
 	validateOnChange?: boolean;
 	debug?: boolean;
+
+	children?: ReactNode;
 
 	style?: React.CSSProperties;
 

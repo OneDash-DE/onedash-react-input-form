@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-state */
-import React from "react";
+import React, { ReactNode } from "react";
 import { v4 as uuidv4 } from "uuid";
 import errorMessages from "../ErrorMessages";
 import { ErrorCodes } from "../localeTypes";
@@ -59,6 +59,11 @@ export interface GenericInputProps<ValueType> {
 	 * OnBlur Event
 	 */
 	onBlur?: (value?: ValueType | null) => any;
+
+	/**
+	 * Children of the component
+	 */
+	children?: ReactNode;
 
 	/**
 	 * OnFocus Event
