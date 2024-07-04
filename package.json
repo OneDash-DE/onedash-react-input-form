@@ -38,7 +38,7 @@
 		"@storybook/manager-webpack5": "6.5.16",
 		"@storybook/preset-create-react-app": "4.1.2",
 		"@storybook/react": "6.5.16",
-		"@types/node": "20.12.12",
+		"@types/node": "20.14.9",
 		"@types/react": "17.0.80",
 		"@types/react-dates": "21.8.6",
 		"@types/react-dom": "17.0.25",
@@ -59,7 +59,7 @@
 		"eslint-plugin-mdx": "1.17.1",
 		"eslint-plugin-n": "14.0.0",
 		"eslint-plugin-prettier": "4.2.1",
-		"eslint-plugin-promise": "6.1.1",
+		"eslint-plugin-promise": "6.4.0",
 		"eslint-plugin-react": "7.34.3",
 		"eslint-plugin-standard": "5.0.0",
 		"husky": "7.0.4",
@@ -72,7 +72,7 @@
 		"sass": "1.77.6",
 		"semantic-release": "19.0.5",
 		"typescript": "4.9.5",
-		"webpack": "5.91.0"
+		"webpack": "5.92.1"
 	},
 	"files": [
 		"dist"
