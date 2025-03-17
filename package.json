@@ -56,8 +56,8 @@
 		"eslint-config-standard": "17.1.0",
 		"eslint-config-standard-react": "13.0.0",
 		"eslint-plugin-import": "2.31.0",
-		"eslint-plugin-mdx": "3.1.5",
-		"eslint-plugin-n": "17.15.1",
+		"eslint-plugin-mdx": "3.2.0",
+		"eslint-plugin-n": "17.16.2",
 		"eslint-plugin-prettier": "4.2.1",
 		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-react": "7.37.4",
@@ -69,10 +69,10 @@
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"react-scripts": "5.0.1",
-		"sass": "1.83.4",
+		"sass": "1.85.1",
 		"semantic-release": "19.0.5",
 		"typescript": "4.9.5",
-		"webpack": "5.97.1"
+		"webpack": "5.98.0"
 	},
 	"files": [
 		"dist"
