@@ -11,7 +11,7 @@ jobs:
         name: "Run Code checks"
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: 🏗 Install dependencies
               run: npm i --legacy-peer-deps
 
