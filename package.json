@@ -62,7 +62,7 @@
 		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-standard": "5.0.0",
-		"husky": "7.0.4",
+		"husky": "9.1.7",
 		"microbundle": "0.15.1",
 		"npm-run-all2": "5.0.2",
 		"prettier": "2.8.8",
