@@ -58,7 +58,7 @@
 		"eslint-plugin-import": "2.32.0",
 		"eslint-plugin-mdx": "3.6.2",
 		"eslint-plugin-n": "17.23.2",
-		"eslint-plugin-prettier": "5.5.4",
+		"eslint-plugin-prettier": "5.5.5",
 		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-standard": "5.0.0",
