@@ -27,7 +27,7 @@
 		"react-dom": "^17.0.2"
 	},
 	"devDependencies": {
-		"@babel/core": "7.28.6",
+		"@babel/core": "7.29.0",
 		"@babel/plugin-syntax-nullish-coalescing-operator": "7.8.3",
 		"@semantic-release/git": "10.0.1",
 		"@storybook/addon-actions": "6.5.16",
@@ -57,7 +57,7 @@
 		"eslint-config-standard-react": "13.0.0",
 		"eslint-plugin-import": "2.32.0",
 		"eslint-plugin-mdx": "3.6.2",
-		"eslint-plugin-n": "17.23.2",
+		"eslint-plugin-n": "17.24.0",
 		"eslint-plugin-prettier": "5.5.5",
 		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-react": "7.37.5",
@@ -65,14 +65,14 @@
 		"husky": "9.1.7",
 		"microbundle": "0.15.1",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.7.4",
+		"prettier": "3.8.1",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"react-scripts": "5.0.1",
 		"sass": "1.97.3",
 		"semantic-release": "25.0.3",
 		"typescript": "4.9.5",
-		"webpack": "5.104.1"
+		"webpack": "5.105.2"
 	},
 	"files": [
 		"dist"
