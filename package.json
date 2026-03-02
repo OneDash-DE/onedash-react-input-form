@@ -72,7 +72,7 @@
 		"sass": "1.97.3",
 		"semantic-release": "25.0.3",
 		"typescript": "4.9.5",
-		"webpack": "5.105.2"
+		"webpack": "5.105.3"
 	},
 	"files": [
 		"dist"
